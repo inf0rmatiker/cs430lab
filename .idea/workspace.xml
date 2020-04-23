@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41c1c013-e3ce-4672-8db3-706c08170c47" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Author.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/Checkout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Checkout.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/DataReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Library.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/Phone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Phone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/Publisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Publisher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/Shelf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Shelf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/StatementExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/StatementExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/StatementExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/StatementExecutor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +81,7 @@
       <workItem from="1586103308754" duration="4374000" />
       <workItem from="1586199191688" duration="3000" />
       <workItem from="1587665591263" duration="608000" />
-      <workItem from="1587666593842" duration="1878000" />
+      <workItem from="1587666593842" duration="2088000" />
     </task>
     <servers />
   </component>

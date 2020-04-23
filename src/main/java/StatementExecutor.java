@@ -4,7 +4,7 @@ public class StatementExecutor {
 
     private static final String USERNAME = System.getenv("SQLUSERNAME");
     private static final String PASSWORD = System.getenv("SQLPASSWORD");
-    private static final String URL = "jdbc:mysql://faure/" + USERNAME;
+    private static final String URL = "jdbc:mysql://faure/" + USERNAME + "/serverTimezone=UTC";
 
     public static void executeStatements() {
 
