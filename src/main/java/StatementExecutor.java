@@ -39,7 +39,7 @@ public class StatementExecutor {
                         processCheckinRecord(stmt, record);
                     }
                     else {
-                        //processCheckoutRecord(stmt, record);
+                        processCheckoutRecord(stmt, record);
                     }
                 }
 
@@ -57,20 +57,38 @@ public class StatementExecutor {
 
     private static void processCheckinRecord(Statement stmt, Checkout record) {
         ResultSet rs;
-        System.out.println("Checking in: " + record);
+        System.out.println("Attempting to check in: " + record);
 
         try {
             // Check for record existing, then update record
             String query = "SELECT * FROM borrowed_by AS b\n" +
                     "WHERE b.member_id = " + record.member_id + " AND\n" +
                     "b.isbn = '" + record.isbn + "' AND b.checkin_date IS NULL";
-            System.out.println(query);
             rs = stmt.executeQuery(query);
             if (rs.next()) {
+                // Update borrowed_by checkin date
                 stmt.executeUpdate("UPDATE borrowed_by AS b\n" +
                         "SET checkin_date = " + record.checkin_date + "\n" +
                         "WHERE b.member_id = " + record.member_id + " AND\n" +
                         "b.isbn = '" + record.isbn + "' AND b.checkin_date IS NULL");
+
+                // Increment library book count to first library that is storing book
+                rs = stmt.executeQuery("SELECT * FROM stored_on AS so\n" +
+                        "WHERE so.isbn = '" + record.isbn + "'");
+                if (rs.next()) {
+                    String firstLibraryName = rs.getString("name");
+                    if (firstLibraryName.equals("Main") || firstLibraryName.equals("South Park")) {
+                        stmt.executeUpdate("UPDATE stored_on AS so\n" +
+                                "SET so.total_copies = so.total_copies + 1\n" +
+                                "WHERE so.isbn = '" + record.isbn + "' AND so.name = '" + firstLibraryName + "'");
+                    }
+                    else {
+                        System.out.println("Incorrect library name: " + firstLibraryName + ", must be either Main or South Park!");
+                    }
+                }
+                else {
+                    System.out.println("No libraries found to be storing that book!");
+                }
             }
             else {
                 System.out.println("No checkout record exists for book checkin attempt!");
@@ -86,7 +104,7 @@ public class StatementExecutor {
 
     private static void processCheckoutRecord(Statement stmt, Checkout record) {
         ResultSet rs;
-
+        System.out.println("Attempting to check in: " + record);
 
     }
 }
