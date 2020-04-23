@@ -415,35 +415,35 @@ public class DataReader {
     }
 
     public static void generateDumps() {
-        List<Library> libraries = readLibraries("Library.txt");
-        writeLibraries(libraries, "LoadLibraries.dump");
+        List<Library> libraries = readLibraries("./data/Library.txt");
+        writeLibraries(libraries, "./dumps/LoadLibraries.dump");
 
-        List<Author> authors = readAuthors("Author.txt");
-        writeAuthors(authors, "LoadAuthors.dump");
+        List<Author> authors = readAuthors("./data/Author.txt");
+        writeAuthors(authors, "./dumps/LoadAuthors.dump");
 
-        List<Publisher> publishers = readPublishers("Publisher.txt");
-        writePublishers(publishers, "LoadPublishers.dump");
+        List<Publisher> publishers = readPublishers("./data/Publisher.txt");
+        writePublishers(publishers, "./dumps/LoadPublishers.dump");
 
-        writePhones(authors, publishers, "LoadPhones.dump");
-        writeAuthorPhones(authors, "LoadAuthorPhones.dump");
-        writePublisherPhones(publishers, "LoadPublisherPhones.dump");
+        writePhones(authors, publishers, "./dumps/LoadPhones.dump");
+        writeAuthorPhones(authors, "./dumps/LoadAuthorPhones.dump");
+        writePublisherPhones(publishers, "./dumps/LoadPublisherPhones.dump");
 
-        List<Member> members = readMembers("Member.txt");
-        writeMembers(members,"LoadMembers.dump");
-        writeBorrowedBy(members, "LoadBorrowedBy.dump");
+        List<Member> members = readMembers("./data/Member.txt");
+        writeMembers(members,"./dumps/LoadMembers.dump");
+        writeBorrowedBy(members, "./dumps/LoadBorrowedBy.dump");
 
         // Read books for the Main library
         Library mainLibrary      = libraries.get(0);
         Library southParkLibrary = libraries.get(1);
 
         Map<String, Book> globalBooksSet = new HashMap<String, Book>();
-        readBooks(mainLibrary, globalBooksSet, "Book.txt");
+        readBooks(mainLibrary, globalBooksSet, "./data/Book.txt");
         readBooks(southParkLibrary, globalBooksSet, "NewBook.txt");
 
-        writeBooks(globalBooksSet, "LoadBooks.dump");
-        writeWrittenBy(globalBooksSet, "LoadWrittenBy.dump");
-        writeShelves(libraries, "LoadShelves.dump");
-        writeStoredOn(libraries, "LoadStoredOn.dump");
+        writeBooks(globalBooksSet, "./dumps/LoadBooks.dump");
+        writeWrittenBy(globalBooksSet, "./dumps/LoadWrittenBy.dump");
+        writeShelves(libraries, "./dumps/LoadShelves.dump");
+        writeStoredOn(libraries, "./dumps/LoadStoredOn.dump");
     }
 
 
