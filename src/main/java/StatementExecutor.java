@@ -63,12 +63,12 @@ public class StatementExecutor {
             // Check for record existing, then update record
             rs = stmt.executeQuery("SELECT * FROM borrowed_by AS b\n" +
                     "WHERE b.member_id = " + record.member_id + " AND\n" +
-                    "b.isbn = " + record.isbn + "AND b.checkin_date IS NULL");
+                    "b.isbn = " + record.isbn + " AND b.checkin_date IS NULL");
             if (rs.next()) {
                 rs = stmt.executeQuery("UPDATE borrowed_by AS b\n" +
                         "SET checkin_date = " + record.checkin_date + "\n" +
                         "WHERE b.member_id = " + record.member_id + " AND\n" +
-                        "b.isbn = " + record.isbn + "AND b.checkin_date IS NULL");
+                        "b.isbn = " + record.isbn + " AND b.checkin_date IS NULL");
             }
 
         } catch (SQLException e) {
