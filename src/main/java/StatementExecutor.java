@@ -78,9 +78,12 @@ public class StatementExecutor {
                 if (rs.next()) {
                     String firstLibraryName = rs.getString("name");
                     if (firstLibraryName.equals("Main") || firstLibraryName.equals("South Park")) {
-                        stmt.executeUpdate("UPDATE stored_on AS so\n" +
+                        String updateQuery = "UPDATE stored_on AS so\n" +
                                 "SET so.total_copies = so.total_copies + 1\n" +
-                                "WHERE so.isbn = '" + record.isbn + "' AND so.name = '" + firstLibraryName + "'");
+                                "WHERE so.isbn = '" + record.isbn + "' AND so.name = '" + firstLibraryName + "'";
+                        if (stmt.executeUpdate(updateQuery) > 0) {
+                            System.out.println("Book checkin successful.");
+                        }
                     }
                     else {
                         System.out.println("Incorrect library name: " + firstLibraryName + ", must be either Main or South Park!");
@@ -104,7 +107,40 @@ public class StatementExecutor {
 
     private static void processCheckoutRecord(Statement stmt, Checkout record) {
         ResultSet rs;
-        System.out.println("Attempting to check in: " + record);
+        System.out.println("Attempting to check out: " + record);
+
+        try {
+            String query = "SELECT * FROM stored_on AS so\n" +
+                    "WHERE so.isbn = '" + record.isbn + "' AND so.total_copies > 0";
+            rs = stmt.executeQuery(query);
+
+            if (rs.next()) {
+                String firstLibraryName = rs.getString("name");
+
+                // Decrement number of copies stored at that library
+                if (firstLibraryName.equals("Main") || firstLibraryName.equals("South Park")) {
+                    stmt.executeUpdate("UPDATE stored_on AS so\n" +
+                            "SET so.total_copies = so.total_copies - 1\n" +
+                            "WHERE so.isbn = '" + record.isbn + "' AND so.name = '" + firstLibraryName + "'");
+                }
+                else {
+                    System.out.println("Incorrect library name: " + firstLibraryName + ", must be either Main or South Park!");
+                }
+
+                // Add checkout record to borrowed_by
+                String insertQuery = "INSERT INTO borrowed_by (member_id, isbn, checkout_date, checkin_date)\n" +
+                        "VALUES (" + record.member_id + ", '" + record.isbn + "', '" + record.checkout_date + "', NULL)";
+                if (stmt.execute(insertQuery)) {
+                    System.out.println("Book checkout successful.");
+                };
+            }
+            else {
+                System.out.println("That book is not currently available in either Main or South Park libraries.");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Book is unavailable to be checked out!");
+        }
 
     }
 }
