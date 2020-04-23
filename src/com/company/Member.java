@@ -8,14 +8,16 @@ public class Member {
     public String firstName;
     public String lastName;
     public String DOB;
+    public Character gender;
 
     public List<Checkout> checkouts;
 
-    public Member(Integer id, String firstName, String lastName, String DOB) {
+    public Member(Integer id, String firstName, String lastName, String DOB, Character gender) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.DOB = isoDateFormat(DOB);
+        this.gender = gender;
         this.checkouts = new ArrayList<Checkout>();
     }
 
@@ -30,6 +32,6 @@ public class Member {
 
     @Override
     public String toString() {
-        return String.format("(%d,'%s','%s','%s')", id, firstName, lastName, DOB);
+        return String.format("(%d,'%s','%s','%s','%c')", id, firstName, lastName, DOB, gender);
     }
 }

@@ -3,9 +3,7 @@ package com.company;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.io.File;
 
 public class Main {
@@ -161,7 +159,7 @@ public class Main {
     public static void writePhones(List<Author> authors, List<Publisher> publishers, String filename) {
         try {
             PrintWriter writer = new PrintWriter(filename);
-            writer.println("INSERT INTO phone VALUES");
+            writer.println("INSERT IGNORE INTO phone VALUES");
             for (Author author: authors) {
                 for (Phone phone: author.phones) {
                     writer.println(phone + ",");
@@ -246,8 +244,9 @@ public class Main {
                     String[] fullName = lineSplit[1].trim().split(" ");
                     Integer id = Integer.parseInt(lineSplit[0].trim());
                     String dateOfBirth = lineSplit[3].trim();
+                    Character gender = lineSplit[2].trim().charAt(0);
 
-                    currentMember = new Member(id, fullName[0], fullName[1], dateOfBirth);
+                    currentMember = new Member(id, fullName[0], fullName[1], dateOfBirth, gender);
                     members.add(currentMember);
                 }
                 else if (currentMember != null && !line.trim().isEmpty()) {
@@ -285,52 +284,51 @@ public class Main {
         }
     }
 
-    public static List<Book> readBooks(String filename) {
-        List<Book> books = new ArrayList<Book>();
-
+    public static void readBooks(Library library, Map<String, Book> globalBooksSet, String filename) {
         File bookFile = new File(filename);
         try {
             Scanner scan = new Scanner(bookFile);
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();
-                if (!Character.isWhitespace(line.charAt(0))) {
+                if (!Character.isWhitespace(line.charAt(0))) { // Read book info
                     String[] lineSplit = line.split(",");
                     String isbn = lineSplit[0].trim();
+                    Integer numberCopies = Integer.parseInt(lineSplit[1].trim());
+                    Integer shelfNumber = Integer.parseInt(lineSplit[2].trim());
+                    Integer floorNumber = Integer.parseInt(lineSplit[3].trim());
                     String title = lineSplit[4].trim();
                     Integer pub_id = Integer.parseInt(lineSplit[5].trim());
                     String[] datePublished = lineSplit[6].trim().split("/");
                     Integer yearPublished = Integer.parseInt(datePublished[2]);
 
-                    Book currentBook = new Book(isbn, title, yearPublished, pub_id);
-
-                    // Read authors
-                    if (scan.hasNextLine()) {
-                        String[] authorIds = scan.nextLine().trim().split(",");
-                        for (String author: authorIds) {
-                            currentBook.authorIds.add(Integer.parseInt(author.trim()));
+                    Book currentBook = new Book(isbn, title, yearPublished, pub_id, numberCopies);
+                    if (!globalBooksSet.containsKey(isbn)) {
+                        // Read authors
+                        if (scan.hasNextLine()) {
+                            String[] authorIds = scan.nextLine().trim().split(",");
+                            for (String author : authorIds) {
+                                currentBook.authorIds.add(Integer.parseInt(author.trim()));
+                            }
                         }
+                        globalBooksSet.put(isbn, currentBook);
                     }
-
-                    books.add(currentBook);
+                    library.addBook(currentBook, shelfNumber, floorNumber);
                 }
             }
             scan.close();
         } catch (FileNotFoundException e) {
-            System.err.println("Couldn't open Authors.txt");
+            System.err.println("Couldn't open " + filename);
         }
 
-        return books;
     }
 
-    public static void writeBooks(List<Book> books, String filename) {
+    public static void writeBooks(Map<String, Book> books, String filename) {
         try {
             PrintWriter writer = new PrintWriter(filename);
             writer.println("INSERT INTO book VALUES");
-            for (int i = 0; i < books.size(); i++) {
-                writer.print(books.get(i)); // Write the Author toString
-                writer.print((i == books.size()-1) ? "\n" : ",\n"); // Don't write trailing comma on last author
+            for (String isbn: books.keySet()) {
+                writer.println(books.get(isbn) + ",");
             }
-
             writer.close();
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -360,27 +358,58 @@ public class Main {
         }
     }
 
-    public static void writeWrittenBy(List<Book> books, String filename) {
+    public static void writeWrittenBy(Map<String, Book> books, String filename) {
         try {
             PrintWriter writer = new PrintWriter(filename);
             writer.println("INSERT INTO written_by VALUES");
-            for (int i = 0; i < books.size(); i++) {
-                Book book = books.get(i);
+            for (String isbn: books.keySet()) {
+                Book book = books.get(isbn);
                 for (int j = 0; j < book.authorIds.size(); j++) {
                     Integer authorId = book.authorIds.get(j);
-                    if (i == (books.size()-1) && j == (book.authorIds.size()-1)) {
-                        writer.println(String.format("(%d,'%s')", authorId, book.isbn));
-                    }
-                    else {
-                        writer.println(String.format("(%d,'%s'),", authorId, book.isbn));
-                    }
+                    writer.println(String.format("(%d,'%s'),", authorId, book.isbn));
                 }
-
             }
 
             writer.close();
         } catch (IOException e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    // Write the shelves for each of the libraries
+    public static void writeShelves(List<Library> libraries, String filename) {
+        try {
+            PrintWriter writer = new PrintWriter(filename);
+            writer.println("INSERT INTO shelf VALUES");
+            for (Library library: libraries) {
+                Map<Integer, Shelf> shelves = library.shelves;
+                for (Integer i: shelves.keySet()) {
+                    Shelf s = shelves.get(i);
+                    writer.println(s + ",");
+                }
+            }
+            writer.close();
+        } catch (FileNotFoundException e) {
+            System.err.println("Unable to write to file " + filename);
+        }
+    }
+
+    public static void writeStoredOn(List<Library> libraries, String filename) {
+        try {
+            PrintWriter writer = new PrintWriter(filename);
+            writer.println("INSERT INTO stored_on VALUES");
+            for (Library library: libraries) {
+                Map<Integer, Shelf> shelves = library.shelves;
+                for (Integer shelfNum: shelves.keySet()) {
+                    Shelf s = shelves.get(shelfNum);
+                    for (Book book: s.books) {
+                        writer.println(String.format("('%s','%s',%d,%d),", book.isbn, library.name, s.s_num, book.num_copies));
+                    }
+                }
+            }
+            writer.close();
+        } catch (FileNotFoundException e) {
+            System.err.println("Unable to write to file " + filename);
         }
     }
 
@@ -402,8 +431,18 @@ public class Main {
         writeMembers(members,"LoadMembers.dump");
         writeBorrowedBy(members, "LoadBorrowedBy.dump");
 
-        List<Book> books = readBooks("Book.txt");
-        writeBooks(books, "LoadBooks.dump");
-        writeWrittenBy(books, "LoadWrittenBy.dump");
+        // Read books for the Main library
+        Library mainLibrary      = libraries.get(0);
+        Library southParkLibrary = libraries.get(1);
+
+        Map<String, Book> globalBooksSet = new HashMap<String, Book>();
+        readBooks(mainLibrary, globalBooksSet, "Book.txt");
+        readBooks(southParkLibrary, globalBooksSet, "NewBook.txt");
+
+        writeBooks(globalBooksSet, "LoadBooks.dump");
+        writeWrittenBy(globalBooksSet, "LoadWrittenBy.dump");
+        writeShelves(libraries, "LoadShelves.dump");
+        writeStoredOn(libraries, "LoadStoredOn.dump");
+
     }
 }

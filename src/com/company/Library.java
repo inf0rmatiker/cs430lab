@@ -1,8 +1,9 @@
 package com.company;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+
+import java.util.Map;
+
 
 public class Library {
 
@@ -11,14 +12,28 @@ public class Library {
     public String city;
     public String state;
 
-    List<Shelf> shelves;
+    Map<Integer, Shelf> shelves;
 
     public Library(String name, String street, String city, String state) {
         this.name = name;
         this.street = street;
         this.city = city;
         this.state = state;
-        this.shelves = new ArrayList<Shelf>();
+        this.shelves = new HashMap<Integer, Shelf>();
+    }
+
+    public void addBook(Book b, Integer shelfNum, Integer shelfFloor) {
+        Shelf shelf = getOrCreateShelf(shelfNum, shelfFloor);
+        shelf.books.add(b);
+    }
+
+    public Shelf getOrCreateShelf(Integer shelfNum, Integer shelfFloor) {
+        Shelf shelf = shelves.get(shelfNum);
+        if (shelf == null) {
+            shelf = new Shelf(name, shelfNum, shelfFloor);
+            shelves.put(shelfNum, shelf);
+        }
+        return shelf;
     }
 
     @Override

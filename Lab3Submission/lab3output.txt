@@ -1,0 +1,441 @@
+MariaDB [cacaleb]> source CreateTables.sql;
+Query OK, 0 rows affected (1.247 sec)
+
+Query OK, 0 rows affected (0.132 sec)
+
+Query OK, 0 rows affected (0.130 sec)
+
+Query OK, 0 rows affected (0.205 sec)
+
+Query OK, 0 rows affected (0.138 sec)
+
+Query OK, 0 rows affected (0.135 sec)
+
+Query OK, 0 rows affected (0.156 sec)
+
+Query OK, 0 rows affected (0.132 sec)
+
+Query OK, 0 rows affected, 1 warning (0.000 sec)
+
+Query OK, 0 rows affected (0.150 sec)
+
+Query OK, 0 rows affected (0.156 sec)
+
+Query OK, 0 rows affected (0.209 sec)
+
+Query OK, 0 rows affected (0.157 sec)
+
+Query OK, 0 rows affected (0.176 sec)
+
+ERROR 1050 (42S01): Table 'list_books_csv' already exists
+MariaDB [cacaleb]> source PopulateTables.sql;
++-----------------+
+| INFO            |
++-----------------+
+| LOADING library |
++-----------------+
+1 row in set (0.000 sec)
+
+Query OK, 2 rows affected (0.132 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
++---------------+
+| INFO          |
++---------------+
+| LOADING shelf |
++---------------+
+1 row in set (0.000 sec)
+
+Query OK, 12 rows affected (0.282 sec)
+Records: 12  Duplicates: 0  Warnings: 0
+
++----------------+
+| INFO           |
++----------------+
+| LOADING author |
++----------------+
+1 row in set (0.000 sec)
+
+Query OK, 16 rows affected (0.113 sec)
+Records: 16  Duplicates: 0  Warnings: 0
+
++-------------------+
+| INFO              |
++-------------------+
+| LOADING publisher |
++-------------------+
+1 row in set (0.000 sec)
+
+Query OK, 8 rows affected (0.185 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
++----------------+
+| INFO           |
++----------------+
+| LOADING member |
++----------------+
+1 row in set (0.000 sec)
+
+Query OK, 32 rows affected (0.180 sec)
+Records: 32  Duplicates: 0  Warnings: 0
+
++--------------+
+| INFO         |
++--------------+
+| LOADING book |
++--------------+
+1 row in set (0.000 sec)
+
+Query OK, 31 rows affected (0.190 sec)
+Records: 31  Duplicates: 0  Warnings: 0
+
++-------------------+
+| INFO              |
++-------------------+
+| LOADING stored_on |
++-------------------+
+1 row in set (0.000 sec)
+
+Query OK, 55 rows affected (0.366 sec)
+Records: 55  Duplicates: 0  Warnings: 0
+
++---------------+
+| INFO          |
++---------------+
+| LOADING phone |
++---------------+
+1 row in set (0.000 sec)
+
+Query OK, 27 rows affected, 4 warnings (0.175 sec)
+Records: 31  Duplicates: 4  Warnings: 4
+
++----------------------+
+| INFO                 |
++----------------------+
+| LOADING author_phone |
++----------------------+
+1 row in set (0.000 sec)
+
+Query OK, 22 rows affected (0.167 sec)
+Records: 22  Duplicates: 0  Warnings: 0
+
++-------------------------+
+| INFO                    |
++-------------------------+
+| LOADING publisher_phone |
++-------------------------+
+1 row in set (0.000 sec)
+
+Query OK, 9 rows affected (0.384 sec)
+Records: 9  Duplicates: 0  Warnings: 0
+
++--------------------+
+| INFO               |
++--------------------+
+| LOADING written_by |
++--------------------+
+1 row in set (0.000 sec)
+
+Query OK, 55 rows affected (0.101 sec)
+Records: 55  Duplicates: 0  Warnings: 0
+
++---------------------+
+| INFO                |
++---------------------+
+| LOADING borrowed_by |
++---------------------+
+1 row in set (0.000 sec)
+
+Query OK, 122 rows affected (0.113 sec)
+Records: 122  Duplicates: 0  Warnings: 0
+
+MariaDB [cacaleb]> source Lab3Queries.sql;
++------------+--------------------+--------------+-------+
+| name       | street             | city         | state |
++------------+--------------------+--------------+-------+
+| Main       | 42 South Main      | Fort Collins | CO    |
+| South Park | 4000 South College | Fort Collins | CO    |
++------------+--------------------+--------------+-------+
+2 rows in set (0.001 sec)
+
++------------+-------+---------+
+| name       | s_num | s_floor |
++------------+-------+---------+
+| Main       |     1 |       1 |
+| Main       |     2 |       1 |
+| Main       |     3 |       1 |
+| Main       |     4 |       1 |
+| Main       |     8 |       2 |
+| Main       |     7 |       2 |
+| Main       |     6 |       2 |
+| Main       |     5 |       2 |
+| South Park |     3 |       2 |
+| South Park |     4 |       2 |
+| South Park |     7 |       3 |
+| South Park |     8 |       3 |
++------------+-------+---------+
+12 rows in set (0.001 sec)
+
++----------------+------------+-------+--------------+
+| isbn           | name       | s_num | total_copies |
++----------------+------------+-------+--------------+
+| 96-42103-10001 | Main       |     1 |            3 |
+| 96-42103-10001 | South Park |     8 |            1 |
+| 96-42103-10002 | Main       |     1 |            1 |
+| 96-42103-10002 | South Park |     8 |            1 |
+| 96-42103-10003 | Main       |     1 |            1 |
+| 96-42103-10003 | South Park |     8 |            1 |
+| 96-42103-10004 | Main       |     2 |            2 |
+| 96-42103-10004 | South Park |     8 |            1 |
+| 96-42103-10005 | Main       |     2 |            1 |
+| 96-42103-10005 | South Park |     8 |            1 |
+| 96-42103-10006 | Main       |     2 |            1 |
+| 96-42103-10006 | South Park |     8 |            1 |
+| 96-42103-10007 | Main       |     3 |            2 |
+| 96-42103-10007 | South Park |     7 |            3 |
+| 96-42103-10008 | Main       |     3 |            2 |
+| 96-42103-10008 | South Park |     7 |            3 |
+| 96-42103-10009 | Main       |     3 |            2 |
+| 96-42103-10009 | South Park |     7 |            1 |
+| 96-42103-10011 | Main       |     4 |            2 |
+| 96-42103-10011 | South Park |     7 |            1 |
+| 96-42103-10022 | Main       |     4 |            3 |
+| 96-42103-10022 | South Park |     7 |            2 |
+| 96-42103-10033 | Main       |     4 |            3 |
+| 96-42103-10033 | South Park |     7 |            3 |
+| 96-42103-10034 | Main       |     5 |            1 |
+| 96-42103-10040 | Main       |     5 |            2 |
+| 96-42103-10040 | South Park |     4 |            1 |
+| 96-42103-10054 | Main       |     5 |            2 |
+| 96-42103-10054 | South Park |     4 |            1 |
+| 96-42103-10068 | Main       |     6 |            1 |
+| 96-42103-10068 | South Park |     4 |            1 |
+| 96-42103-10081 | Main       |     6 |            1 |
+| 96-42103-10081 | South Park |     4 |            1 |
+| 96-42103-10093 | Main       |     6 |            1 |
+| 96-42103-10093 | South Park |     4 |            1 |
+| 96-42103-10109 | Main       |     6 |            1 |
+| 96-42103-10109 | South Park |     4 |            1 |
+| 96-42103-10206 | Main       |     7 |            1 |
+| 96-42103-10206 | South Park |     4 |            1 |
+| 96-42103-10300 | Main       |     7 |            2 |
+| 96-42103-10300 | South Park |     4 |            1 |
+| 96-42103-10401 | Main       |     7 |            2 |
+| 96-42103-10401 | South Park |     3 |            1 |
+| 96-42103-10502 | Main       |     7 |            1 |
+| 96-42103-10502 | South Park |     3 |            1 |
+| 96-42103-10604 | Main       |     8 |            2 |
+| 96-42103-10709 | Main       |     8 |            3 |
+| 96-42103-10800 | Main       |     8 |            2 |
+| 96-42103-10907 | Main       |     8 |            7 |
+| 96-42103-10907 | South Park |     3 |            7 |
+| 96-42103-11003 | Main       |     8 |            3 |
+| 96-42103-11003 | South Park |     3 |            2 |
+| 96-42103-11604 | South Park |     3 |            2 |
+| 96-42103-11709 | South Park |     3 |            1 |
+| 96-42103-11800 | South Park |     3 |            2 |
++----------------+------------+-------+--------------+
+55 rows in set (0.001 sec)
+
++------------------------------+-------+------------+
+| title                        | s_num | name       |
++------------------------------+-------+------------+
+| American Football            |     4 | Main       |
+| American Football            |     7 | South Park |
+| Challenging Puzzles          |     7 | South Park |
+| Challenging Puzzles          |     4 | Main       |
+| Cubs Win!                    |     8 | Main       |
+| Cubs Win!                    |     3 | South Park |
+| Database Theory              |     4 | Main       |
+| Database Theory              |     7 | South Park |
+| Downton Abbey                |     7 | South Park |
+| Downton Abbey                |     3 | Main       |
+| Eating Healthy               |     4 | South Park |
+| Eating Healthy               |     7 | Main       |
+| Escape from Gilligans Island |     4 | South Park |
+| Escape from Gilligans Island |     6 | Main       |
+| Fixing Computers             |     6 | Main       |
+| Fixing Computers             |     4 | South Park |
+| Gardening Tips               |     7 | Main       |
+| Gardening Tips               |     3 | South Park |
+| Hal Finds a Home             |     2 | Main       |
+| Hal Finds a Home             |     8 | South Park |
+| How to Digitally Sign        |     3 | Main       |
+| How to Digitally Sign        |     7 | South Park |
+| How to Grow Cucumbers        |     7 | Main       |
+| How to Grow Cucumbers        |     3 | South Park |
+| How to Grow Tomatoes         |     1 | Main       |
+| How to Grow Tomatoes         |     8 | South Park |
+| Lacey Discovers Herself      |     5 | Main       |
+| Lacey Discovers Herself      |     4 | South Park |
+| Last Train to Clarksville    |     2 | Main       |
+| Last Train to Clarksville    |     8 | South Park |
+| Missing Tomorrow             |     8 | Main       |
+| Missing Tomorrow             |     3 | South Park |
+| Mr. Ed                       |     6 | Main       |
+| Mr. Ed                       |     4 | South Park |
+| Mr. Smith Goes to Washington |     8 | South Park |
+| Mr. Smith Goes to Washington |     1 | Main       |
+| Red Burn                     |     4 | South Park |
+| Red Burn                     |     6 | Main       |
+| Sam Needs a Friend           |     3 | Main       |
+| Sam Needs a Friend           |     7 | South Park |
+| Studying is Your Friend      |     1 | Main       |
+| Studying is Your Friend      |     8 | South Park |
+| Taks McGrill                 |     7 | Main       |
+| Taks McGrill                 |     4 | South Park |
+| To Have and To Cherish       |     8 | South Park |
+| To Have and To Cherish       |     2 | Main       |
+| Where to Start               |     5 | Main       |
+| Where to Start               |     4 | South Park |
++------------------------------+-------+------------+
+48 rows in set (0.001 sec)
+
++-------+------------+----------+
+| s_num | name       | count(*) |
++-------+------------+----------+
+|     1 | Main       |        3 |
+|     2 | Main       |        3 |
+|     3 | Main       |        3 |
+|     4 | Main       |        3 |
+|     5 | Main       |        3 |
+|     6 | Main       |        4 |
+|     7 | Main       |        4 |
+|     8 | Main       |        5 |
+|     3 | South Park |        7 |
+|     4 | South Park |        8 |
+|     7 | South Park |        6 |
+|     8 | South Park |        6 |
++-------+------------+----------+
+12 rows in set (0.001 sec)
+
+Query OK, 0 rows affected, 1 warning (0.000 sec)
+
+Query OK, 0 rows affected, 1 warning (0.000 sec)
+
+Query OK, 0 rows affected, 1 warning (0.000 sec)
+
+Query OK, 0 rows affected, 1 warning (0.000 sec)
+
+Query OK, 0 rows affected (0.051 sec)
+
+Query OK, 0 rows affected (0.048 sec)
+
+Query OK, 0 rows affected (0.048 sec)
+
+Query OK, 0 rows affected (0.048 sec)
+
++------------------------------------------------------------------------------------+
+| result                                                                             |
++------------------------------------------------------------------------------------+
+| American Football,Julie Barnes,4,1,Main                                            |
+| American Football,Julie Barnes,7,3,South Park                                      |
+| Blue is Your Friend,Barbara Wright,John Crichton,3,2,South Park                    |
+| Challenging Puzzles,Roger Ramjet,4,1,Main                                          |
+| Challenging Puzzles,Roger Ramjet,7,3,South Park                                    |
+| Cubs Win!,Red Skelton,Barbara Wright,3,2,South Park                                |
+| Cubs Win!,Red Skelton,Barbara Wright,8,2,Main                                      |
+| Database Theory,Waco Kid,Dickey Betts,4,1,Main                                     |
+| Database Theory,Waco Kid,Dickey Betts,7,3,South Park                               |
+| Downton Abbey,Robert Crawley,3,1,Main                                              |
+| Downton Abbey,Robert Crawley,7,3,South Park                                        |
+| Eating Healthy,Dickey Betts,Waco Kid,4,2,South Park                                |
+| Eating Healthy,Dickey Betts,Waco Kid,7,2,Main                                      |
+| Eating in the Fort,Thomas Magnum,3,2,South Park                                    |
+| Escape from Gilligans Island,Mickey Hart,Bobby Ewing,4,2,South Park                |
+| Escape from Gilligans Island,Mickey Hart,Bobby Ewing,6,2,Main                      |
+| European Football,Julie Barnes,5,2,Main                                            |
+| Fixing Computers,Red Skelton,4,2,South Park                                        |
+| Fixing Computers,Red Skelton,6,2,Main                                              |
+| Gardening Tips,Thomas Magnum,Julie Barnes,3,2,South Park                           |
+| Gardening Tips,Thomas Magnum,Julie Barnes,7,2,Main                                 |
+| Green Eggs,Thomas Magnum,Aeon Flux,3,2,South Park                                  |
+| Green is Your Friend,Barbara Wright,John Crichton,8,2,Main                         |
+| Hal Finds a Home,Mickey Hart,2,1,Main                                              |
+| Hal Finds a Home,Mickey Hart,8,3,South Park                                        |
+| How to Digitally Sign,Red Skelton,John Crichton,3,1,Main                           |
+| How to Digitally Sign,Red Skelton,John Crichton,7,3,South Park                     |
+| How to Grow Cucumbers,Bobby Ewing,Roger Ramjet,3,2,South Park                      |
+| How to Grow Cucumbers,Bobby Ewing,Roger Ramjet,7,2,Main                            |
+| How to Grow Tomatoes,Bobby Ewing,Waco Kid,1,1,Main                                 |
+| How to Grow Tomatoes,Bobby Ewing,Waco Kid,8,3,South Park                           |
+| Lacey Discovers Herself,Thomas Magnum,Julie Barnes,4,2,South Park                  |
+| Lacey Discovers Herself,Thomas Magnum,Julie Barnes,5,2,Main                        |
+| Last Train to Clarksville,Bobby Ewing,2,1,Main                                     |
+| Last Train to Clarksville,Bobby Ewing,8,3,South Park                               |
+| Missing Tomorrow,Grace Slick,Mickey Hart,Perry Mason,Dickey Betts,3,2,South Park   |
+| Missing Tomorrow,Grace Slick,Mickey Hart,Perry Mason,Dickey Betts,8,2,Main         |
+| Mr. Ed,Scottie Ferguson,4,2,South Park                                             |
+| Mr. Ed,Scottie Ferguson,6,2,Main                                                   |
+| Mr. Smith Goes to Washington,Red Skelton,1,1,Main                                  |
+| Mr. Smith Goes to Washington,Red Skelton,8,3,South Park                            |
+| Red Burn,Waco Kid,Robert Crawley,4,2,South Park                                    |
+| Red Burn,Waco Kid,Robert Crawley,6,2,Main                                          |
+| Sam Needs a Friend,Roger Thornhill,Scottie Ferguson,Barbara Wright,3,1,Main        |
+| Sam Needs a Friend,Roger Thornhill,Scottie Ferguson,Barbara Wright,7,3,South Park  |
+| Studying is Your Friend,Thomas Magnum,Roger Ramjet,1,1,Main                        |
+| Studying is Your Friend,Thomas Magnum,Roger Ramjet,8,3,South Park                  |
+| Taks McGrill,Barbara Wright,Scottie Ferguson,4,2,South Park                        |
+| Taks McGrill,Barbara Wright,Scottie Ferguson,7,2,Main                              |
+| To Have and To Cherish,Robert Crawley,Roger Thornhill,John Crichton,2,1,Main       |
+| To Have and To Cherish,Robert Crawley,Roger Thornhill,John Crichton,8,3,South Park |
+| Too Many Cooks,Aeon Flux,Thomas Magnum,8,2,Main                                    |
+| Using the Library,Thomas Magnum,8,2,Main                                           |
+| Where to Start,Roger Ramjet,Grace Slick,4,2,South Park                             |
+| Where to Start,Roger Ramjet,Grace Slick,5,2,Main                                   |
++------------------------------------------------------------------------------------+
+55 rows in set (0.003 sec)
+
+MariaDB [cacaleb]> source ActivityScript.sql;
+Query OK, 1 row affected (0.033 sec)
+
+Query OK, 1 row affected (0.030 sec)
+
+Query OK, 1 row affected (0.024 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.030 sec)
+
+Query OK, 1 row affected (0.024 sec)
+
+Query OK, 1 row affected (0.072 sec)
+
+Query OK, 1 row affected (0.026 sec)
+
+Query OK, 1 row affected (0.030 sec)
+
+Query OK, 1 row affected (0.030 sec)
+
+Query OK, 1 row affected (0.027 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`cacaleb`.`book`, CONSTRAINT `book_ibfk_1` FOREIGN KEY (`pub_id`) REFERENCES `publisher` (`pub_id`) ON DELETE CASCADE)
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`cacaleb`.`stored_on`, CONSTRAINT `stored_on_ibfk_1` FOREIGN KEY (`isbn`) REFERENCES `book` (`isbn`) ON DELETE CASCADE)
++----+------------+--------+---------------------+
+| id | table_name | action | time                |
++----+------------+--------+---------------------+
+|  1 | author     | INSERT | 2020-04-05 16:42:25 |
+|  2 | stored_on  | UPDATE | 2020-04-05 19:08:57 |
+|  3 | stored_on  | INSERT | 2020-04-05 19:10:55 |
+|  4 | author     | INSERT | 2020-04-05 19:10:55 |
+|  5 | stored_on  | INSERT | 2020-04-05 19:10:55 |
+|  6 | stored_on  | DELETE | 2020-04-05 19:10:55 |
+|  7 | stored_on  | UPDATE | 2020-04-05 19:10:55 |
+|  8 | stored_on  | UPDATE | 2020-04-05 19:12:25 |
+|  9 | stored_on  | UPDATE | 2020-04-05 19:12:25 |
+| 10 | stored_on  | INSERT | 2020-04-05 19:13:31 |
+| 11 | stored_on  | UPDATE | 2020-04-05 19:13:31 |
+| 12 | author     | INSERT | 2020-04-05 19:13:31 |
+| 13 | stored_on  | INSERT | 2020-04-05 19:13:31 |
+| 14 | stored_on  | DELETE | 2020-04-05 19:13:31 |
+| 15 | stored_on  | UPDATE | 2020-04-05 19:13:31 |
+| 16 | stored_on  | INSERT | 2020-04-05 19:15:30 |
+| 17 | stored_on  | UPDATE | 2020-04-05 19:15:30 |
+| 18 | author     | INSERT | 2020-04-05 19:15:30 |
+| 19 | stored_on  | INSERT | 2020-04-05 19:15:30 |
+| 20 | stored_on  | DELETE | 2020-04-05 19:15:30 |
+| 21 | stored_on  | UPDATE | 2020-04-05 19:15:30 |
++----+------------+--------+---------------------+
+21 rows in set (0.001 sec)
+
+MariaDB [cacaleb]> notee;

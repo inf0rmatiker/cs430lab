@@ -1,0 +1,13 @@
+INSERT INTO shelf VALUES
+('Main',1,1),
+('Main',2,1),
+('Main',3,1),
+('Main',4,1),
+('Main',5,2),
+('Main',6,2),
+('Main',7,2),
+('Main',8,2),
+('South Park',3,2),
+('South Park',4,2),
+('South Park',7,3),
+('South Park',8,3)
