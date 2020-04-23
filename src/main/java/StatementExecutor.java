@@ -72,6 +72,7 @@ public class StatementExecutor {
             }
 
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
             System.out.println("No checkout record exists for book checkin attempt!");
         }
 
