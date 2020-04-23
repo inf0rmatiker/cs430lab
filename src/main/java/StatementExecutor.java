@@ -129,7 +129,7 @@ public class StatementExecutor {
 
                 // Add checkout record to borrowed_by
                 String insertQuery = "INSERT INTO borrowed_by (member_id, isbn, checkout_date, checkin_date)\n" +
-                        "VALUES (" + record.member_id + ", '" + record.isbn + "', '" + record.checkout_date + "', NULL)";
+                        "VALUES (" + record.member_id + ", '" + record.isbn + "', " + record.checkout_date + ", NULL)";
                 if (stmt.execute(insertQuery)) {
                     System.out.println("Book checkout successful.");
                 };
