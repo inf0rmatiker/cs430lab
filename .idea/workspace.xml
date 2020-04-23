@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="41c1c013-e3ce-4672-8db3-706c08170c47" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LoadBooks.dump" beforeDir="false" afterPath="$PROJECT_DIR$/LoadBooks.dump" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LoadMembers.dump" beforeDir="false" afterPath="$PROJECT_DIR$/LoadMembers.dump" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LoadPhones.dump" beforeDir="false" afterPath="$PROJECT_DIR$/LoadPhones.dump" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LoadWrittenBy.dump" beforeDir="false" afterPath="$PROJECT_DIR$/LoadWrittenBy.dump" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab2/com/company/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab2/com/company/Book.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab2/com/company/Library.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab2/com/company/Library.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab2/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab2/com/company/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab2/com/company/Member.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab2/com/company/Member.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Library.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Member.java" afterDir="false" />
-    </list>
+    <list default="true" id="41c1c013-e3ce-4672-8db3-706c08170c47" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,7 +21,6 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -45,7 +30,7 @@
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.company.Main" />
-      <module name="Lab2" />
+      <module name="cs430lab" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
@@ -76,11 +61,12 @@
       <workItem from="1586041950660" duration="4285000" />
       <workItem from="1586103308754" duration="4374000" />
       <workItem from="1586199191688" duration="3000" />
+      <workItem from="1587665591263" duration="608000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1001" y="408" width="548" height="592" key="#com.intellij.ide.util.MemberChooser" timestamp="1586042643047">
