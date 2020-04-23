@@ -57,6 +57,7 @@ public class StatementExecutor {
 
     private static void processCheckinRecord(Statement stmt, Checkout record) {
         ResultSet rs;
+        System.out.println("Checking in: " + record);
 
         try {
             // Check for record existing, then update record
