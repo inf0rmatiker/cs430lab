@@ -1,5 +1,3 @@
-package com.company;
-
 public class Checkout {
 
     public String isbn, checkout_date, checkin_date;

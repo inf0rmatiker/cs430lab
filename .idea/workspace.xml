@@ -2,43 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41c1c013-e3ce-4672-8db3-706c08170c47" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cs430lab.iml" beforeDir="false" afterPath="$PROJECT_DIR$/cs430lab.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab2/com/company/Author.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab2/com/company/Book.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab2/com/company/Checkout.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab2/com/company/Library.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab2/com/company/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab2/com/company/Member.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab2/com/company/Phone.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab2/com/company/Publisher.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab2/com/company/Shelf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cs430lab/com/company/Author.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cs430lab/com/company/Book.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cs430lab/com/company/Checkout.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cs430lab/com/company/DataReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cs430lab/com/company/Library.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cs430lab/com/company/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cs430lab/com/company/Member.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cs430lab/com/company/Phone.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cs430lab/com/company/Publisher.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cs430lab/com/company/Shelf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cs430lab/com/company/StatementExecutor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/Author.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Checkout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/Checkout.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/DataReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/DataReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/Library.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Phone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/Phone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Publisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/Publisher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Shelf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/Shelf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/StatementExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/StatementExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Author.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/Checkout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Checkout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/DataReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Library.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/Phone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Phone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/Publisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Publisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/Shelf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Shelf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/StatementExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/StatementExecutor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +47,9 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/data" />
       <recent name="$PROJECT_DIR$/dumps" />
@@ -80,7 +57,7 @@
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.company.Main" />
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="cs430lab" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <RunnerSettings RunnerId="Run" />
@@ -113,7 +90,7 @@
       <workItem from="1586103308754" duration="4374000" />
       <workItem from="1586199191688" duration="3000" />
       <workItem from="1587665591263" duration="608000" />
-      <workItem from="1587666593842" duration="1491000" />
+      <workItem from="1587666593842" duration="1878000" />
     </task>
     <servers />
   </component>
@@ -129,26 +106,34 @@
       <screen x="0" y="27" width="2560" height="2493" />
     </state>
     <state x="882" y="373" width="785" height="661" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.27.2560.2493@0.27.2560.2493" timestamp="1587667925462" />
-    <state width="2514" height="378" key="GridCell.Tab.0.bottom" timestamp="1587667970958">
+    <state x="1033" y="568" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587668466700">
+      <screen x="0" y="27" width="2560" height="2493" />
+    </state>
+    <state x="1033" y="568" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.27.2560.2493@0.27.2560.2493" timestamp="1587668466700" />
+    <state width="2514" height="378" key="GridCell.Tab.0.bottom" timestamp="1587668321832">
       <screen x="0" y="27" width="2560" height="2493" />
     </state>
     <state width="2514" height="378" key="GridCell.Tab.0.bottom/0.27.2560.1356@0.27.2560.1356" timestamp="1586137088656" />
-    <state width="2514" height="378" key="GridCell.Tab.0.bottom/0.27.2560.2493@0.27.2560.2493" timestamp="1587667970958" />
-    <state width="2514" height="378" key="GridCell.Tab.0.center" timestamp="1587667970958">
+    <state width="2514" height="378" key="GridCell.Tab.0.bottom/0.27.2560.2493@0.27.2560.2493" timestamp="1587668321832" />
+    <state width="2514" height="378" key="GridCell.Tab.0.center" timestamp="1587668321832">
       <screen x="0" y="27" width="2560" height="2493" />
     </state>
     <state width="2514" height="378" key="GridCell.Tab.0.center/0.27.2560.1356@0.27.2560.1356" timestamp="1586137088655" />
-    <state width="2514" height="378" key="GridCell.Tab.0.center/0.27.2560.2493@0.27.2560.2493" timestamp="1587667970958" />
-    <state width="2514" height="378" key="GridCell.Tab.0.left" timestamp="1587667970957">
+    <state width="2514" height="378" key="GridCell.Tab.0.center/0.27.2560.2493@0.27.2560.2493" timestamp="1587668321832" />
+    <state width="2514" height="378" key="GridCell.Tab.0.left" timestamp="1587668321832">
       <screen x="0" y="27" width="2560" height="2493" />
     </state>
     <state width="2514" height="378" key="GridCell.Tab.0.left/0.27.2560.1356@0.27.2560.1356" timestamp="1586137088654" />
-    <state width="2514" height="378" key="GridCell.Tab.0.left/0.27.2560.2493@0.27.2560.2493" timestamp="1587667970957" />
-    <state width="2514" height="378" key="GridCell.Tab.0.right" timestamp="1587667970958">
+    <state width="2514" height="378" key="GridCell.Tab.0.left/0.27.2560.2493@0.27.2560.2493" timestamp="1587668321832" />
+    <state width="2514" height="378" key="GridCell.Tab.0.right" timestamp="1587668321832">
       <screen x="0" y="27" width="2560" height="2493" />
     </state>
     <state width="2514" height="378" key="GridCell.Tab.0.right/0.27.2560.1356@0.27.2560.1356" timestamp="1586137088656" />
-    <state width="2514" height="378" key="GridCell.Tab.0.right/0.27.2560.2493@0.27.2560.2493" timestamp="1587667970958" />
+    <state width="2514" height="378" key="GridCell.Tab.0.right/0.27.2560.2493@0.27.2560.2493" timestamp="1587668321832" />
+    <state x="863" y="450" width="824" height="508" key="IDE.errors.dialog" timestamp="1587668250542">
+      <screen x="0" y="27" width="2560" height="2493" />
+    </state>
+    <state x="863" y="450" width="824" height="508" key="IDE.errors.dialog/0.27.2560.2493@0.27.2560.2493" timestamp="1587668250542" />
     <state x="763" y="281" width="1024" height="845" key="SettingsEditor" timestamp="1587667986280">
       <screen x="0" y="27" width="2560" height="2493" />
     </state>
