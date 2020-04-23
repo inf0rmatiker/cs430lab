@@ -3,8 +3,10 @@ public class Main {
     public static void main(String[] args) {
         //DataReader.generateDumps();
         //StatementExecutor.executeStatements();
-        XmlParser parser = new XmlParser("./data/Libdata.xml");
-
+        CheckoutXmlParser parser = new CheckoutXmlParser("./data/Libdata.xml");
+        for (Checkout c: parser.checkouts) {
+            System.out.println(c);
+        }
 
     }
 }

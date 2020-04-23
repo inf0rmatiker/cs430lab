@@ -1,4 +1,7 @@
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.*;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -8,12 +11,14 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class XmlParser {
+public class CheckoutXmlParser {
 
     private final String filename;
+    public List<Checkout> checkouts;
 
-    public XmlParser(String filename) {
+    public CheckoutXmlParser(String filename) {
         this.filename = filename;
+        this.checkouts = new ArrayList<>();
         readXML();
     }
 
@@ -31,31 +36,42 @@ public class XmlParser {
                 Node fstNode = nodeLst.item(s);
 
                 if (fstNode.getNodeType() == Node.ELEMENT_NODE) {
+                    int member_id;
+                    String isbn, checkout_date, checkin_date;
 
                     Element sectionNode = (Element) fstNode;
 
                     NodeList memberIdElementList = sectionNode.getElementsByTagName("MemberID");
                     Element memberIdElmnt = (Element) memberIdElementList.item(0);
                     NodeList memberIdNodeList = memberIdElmnt.getChildNodes();
-                    System.out.println("MemberID : "  + ((Node) memberIdNodeList.item(0)).getNodeValue().trim());
+                    member_id = Integer.parseInt(((Node) memberIdNodeList.item(0)).getNodeValue().trim());
 
                     NodeList secnoElementList = sectionNode.getElementsByTagName("ISBN");
                     Element secnoElmnt = (Element) secnoElementList.item(0);
                     NodeList secno = secnoElmnt.getChildNodes();
-                    System.out.println("ISBN : "  + ((Node) secno.item(0)).getNodeValue().trim());
+                    isbn = ((Node) secno.item(0)).getNodeValue().trim();
 
                     NodeList codateElementList = sectionNode.getElementsByTagName("Checkout_date");
                     Element codElmnt = (Element) codateElementList.item(0);
                     NodeList cod = codElmnt.getChildNodes();
-                    System.out.println("Checkout_date : "  + ((Node) cod.item(0)).getNodeValue().trim());
+                    checkout_date = ((Node) cod.item(0)).getNodeValue().trim();
 
                     NodeList cidateElementList = sectionNode.getElementsByTagName("Checkin_date");
                     Element cidElmnt = (Element) cidateElementList.item(0);
                     NodeList cid = cidElmnt.getChildNodes();
-                    System.out.println("Checkin_date : "  + ((Node) cid.item(0)).getNodeValue().trim());
+                    checkin_date = ((Node) cid.item(0)).getNodeValue().trim();
 
-                    System.out.println();
+                    if (isInvalidDateFormat(checkout_date)) {
+                        checkout_date = null;
+                    }
+
+                    if (isInvalidDateFormat(checkin_date)) {
+                        checkin_date = null;
+                    }
+
+                    checkouts.add(new Checkout(member_id, isbn, checkout_date, checkin_date));
                 }
+
 
             }
         } catch (Exception e) {
@@ -63,17 +79,10 @@ public class XmlParser {
         }
     }
 
-/*
-    public static void main(String args[]){
-        try {
+    public boolean isInvalidDateFormat(String value) {
+        Pattern format = Pattern.compile("^\\d{2}/\\d{2}/\\d{4}$");
+        Matcher matcher = format.matcher(value);
+        return !matcher.matches();
+    }
 
-            Lab4_xml showXML = new Lab4_xml();
-            showXML.readXML ("./data/Libdata.xml");
-        }catch( Exception e ) {
-            e.printStackTrace();
-
-        }//end catch
-
-    }//end main
-*/
 }//end class
