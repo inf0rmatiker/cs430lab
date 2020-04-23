@@ -5,8 +5,14 @@ public class Main {
         if (args.length > 0) {
             String libdata = args[0];
             CheckoutXmlParser parser = new CheckoutXmlParser(libdata);
-            StatementExecutor.executeStatements(parser.checkouts);
-            System.out.println("Program executed successfully.");
+
+            if (parser.checkouts.isEmpty()) {
+                System.out.println("No checkin/out records to process");
+            }
+            else {
+                StatementExecutor.executeStatements(parser.checkouts);
+                System.out.println("Program executed successfully.");
+            }
         }
 
 
