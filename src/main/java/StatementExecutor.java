@@ -70,6 +70,9 @@ public class StatementExecutor {
                         "WHERE b.member_id = " + record.member_id + " AND\n" +
                         "b.isbn = " + record.isbn + " AND b.checkin_date IS NULL");
             }
+            else {
+                System.out.println("No checkout record exists for book checkin attempt!");
+            }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
