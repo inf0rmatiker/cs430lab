@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41c1c013-e3ce-4672-8db3-706c08170c47" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/data/Libdata.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/XmlParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/StatementExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/StatementExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Checkout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Checkout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,12 +25,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1Zde5oDxeNuHlL754PZ7sXh6Iy6" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -81,12 +88,16 @@
       <workItem from="1586103308754" duration="4374000" />
       <workItem from="1586199191688" duration="3000" />
       <workItem from="1587665591263" duration="608000" />
-      <workItem from="1587666593842" duration="2158000" />
+      <workItem from="1587666593842" duration="3363000" />
+      <workItem from="1587677889721" duration="485000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1001" y="408" width="548" height="592" key="#com.intellij.ide.util.MemberChooser" timestamp="1586042643047">
@@ -101,26 +112,26 @@
       <screen x="0" y="27" width="2560" height="2493" />
     </state>
     <state x="1033" y="568" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.27.2560.2493@0.27.2560.2493" timestamp="1587668466700" />
-    <state width="2514" height="378" key="GridCell.Tab.0.bottom" timestamp="1587668321832">
+    <state width="2514" height="378" key="GridCell.Tab.0.bottom" timestamp="1587677822397">
       <screen x="0" y="27" width="2560" height="2493" />
     </state>
     <state width="2514" height="378" key="GridCell.Tab.0.bottom/0.27.2560.1356@0.27.2560.1356" timestamp="1586137088656" />
-    <state width="2514" height="378" key="GridCell.Tab.0.bottom/0.27.2560.2493@0.27.2560.2493" timestamp="1587668321832" />
-    <state width="2514" height="378" key="GridCell.Tab.0.center" timestamp="1587668321832">
+    <state width="2514" height="378" key="GridCell.Tab.0.bottom/0.27.2560.2493@0.27.2560.2493" timestamp="1587677822397" />
+    <state width="2514" height="378" key="GridCell.Tab.0.center" timestamp="1587677822397">
       <screen x="0" y="27" width="2560" height="2493" />
     </state>
     <state width="2514" height="378" key="GridCell.Tab.0.center/0.27.2560.1356@0.27.2560.1356" timestamp="1586137088655" />
-    <state width="2514" height="378" key="GridCell.Tab.0.center/0.27.2560.2493@0.27.2560.2493" timestamp="1587668321832" />
-    <state width="2514" height="378" key="GridCell.Tab.0.left" timestamp="1587668321832">
+    <state width="2514" height="378" key="GridCell.Tab.0.center/0.27.2560.2493@0.27.2560.2493" timestamp="1587677822397" />
+    <state width="2514" height="378" key="GridCell.Tab.0.left" timestamp="1587677822396">
       <screen x="0" y="27" width="2560" height="2493" />
     </state>
     <state width="2514" height="378" key="GridCell.Tab.0.left/0.27.2560.1356@0.27.2560.1356" timestamp="1586137088654" />
-    <state width="2514" height="378" key="GridCell.Tab.0.left/0.27.2560.2493@0.27.2560.2493" timestamp="1587668321832" />
-    <state width="2514" height="378" key="GridCell.Tab.0.right" timestamp="1587668321832">
+    <state width="2514" height="378" key="GridCell.Tab.0.left/0.27.2560.2493@0.27.2560.2493" timestamp="1587677822396" />
+    <state width="2514" height="378" key="GridCell.Tab.0.right" timestamp="1587677822397">
       <screen x="0" y="27" width="2560" height="2493" />
     </state>
     <state width="2514" height="378" key="GridCell.Tab.0.right/0.27.2560.1356@0.27.2560.1356" timestamp="1586137088656" />
-    <state width="2514" height="378" key="GridCell.Tab.0.right/0.27.2560.2493@0.27.2560.2493" timestamp="1587668321832" />
+    <state width="2514" height="378" key="GridCell.Tab.0.right/0.27.2560.2493@0.27.2560.2493" timestamp="1587677822397" />
     <state x="863" y="450" width="824" height="508" key="IDE.errors.dialog" timestamp="1587668250542">
       <screen x="0" y="27" width="2560" height="2493" />
     </state>

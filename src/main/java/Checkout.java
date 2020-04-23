@@ -1,8 +1,10 @@
 public class Checkout {
 
-    public String isbn, checkout_date, checkin_date;
+    public Integer member_id;
+    public String  isbn, checkout_date, checkin_date;
 
-    public Checkout(String isbn, String checkout_date, String checkin_date) {
+    public Checkout(Integer member_id, String isbn, String checkout_date, String checkin_date) {
+        this.member_id = member_id;
         this.isbn = isbn;
         this.checkout_date = isoDateFormat(checkout_date);
         if (checkin_date == null) {

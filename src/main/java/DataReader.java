@@ -257,7 +257,7 @@ public class DataReader {
                         checkinDate = checkoutInfo[2].trim();
                     }
 
-                    currentMember.addCheckout(new Checkout(isbn, checkoutDate, checkinDate));
+                    currentMember.addCheckout(new Checkout(currentMember.id, isbn, checkoutDate, checkinDate));
                 }
             }
             scan.close();
