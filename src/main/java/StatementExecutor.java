@@ -63,14 +63,14 @@ public class StatementExecutor {
             // Check for record existing, then update record
             String query = "SELECT * FROM borrowed_by AS b\n" +
                     "WHERE b.member_id = " + record.member_id + " AND\n" +
-                    "b.isbn = " + record.isbn + " AND b.checkin_date IS NULL";
+                    "b.isbn = '" + record.isbn + "' AND b.checkin_date IS NULL";
             System.out.println(query);
             rs = stmt.executeQuery(query);
             if (rs.next()) {
                 rs = stmt.executeQuery("UPDATE borrowed_by AS b\n" +
                         "SET checkin_date = " + record.checkin_date + "\n" +
                         "WHERE b.member_id = " + record.member_id + " AND\n" +
-                        "b.isbn = " + record.isbn + " AND b.checkin_date IS NULL");
+                        "b.isbn = '" + record.isbn + "' AND b.checkin_date IS NULL");
             }
             else {
                 System.out.println("No checkout record exists for book checkin attempt!");
