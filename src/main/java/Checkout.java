@@ -26,7 +26,7 @@ public class Checkout {
     }
 
     public boolean isCheckin() {
-        return checkout_date.equals("'NULL'");
+        return checkout_date.equals("NULL");
     }
 
     public boolean isCheckout() {
