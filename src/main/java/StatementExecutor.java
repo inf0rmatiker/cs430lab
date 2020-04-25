@@ -132,7 +132,10 @@ public class StatementExecutor {
                         "VALUES (" + record.member_id + ", '" + record.isbn + "', " + record.checkout_date + ", NULL)";
                 if (stmt.execute(insertQuery)) {
                     System.out.println("Book checkout successful.");
-                };
+                }
+                else {
+                    System.out.println("Book checkout unsuccessful.");
+                }
             }
             else {
                 System.out.println("That book is not currently available in either Main or South Park libraries.");
