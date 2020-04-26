@@ -44,7 +44,7 @@ public class StatementExecutor {
                 }
 
             } catch(Exception e) {
-                System.out.print(e);
+                System.out.print(e.getMessage());
                 System.out.println("No Author table to query");
             }//end catch
 
