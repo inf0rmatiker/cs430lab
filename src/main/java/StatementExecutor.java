@@ -122,19 +122,16 @@ public class StatementExecutor {
                     stmt.executeUpdate("UPDATE stored_on AS so\n" +
                             "SET so.total_copies = so.total_copies - 1\n" +
                             "WHERE so.isbn = '" + record.isbn + "' AND so.name = '" + firstLibraryName + "'");
-                }
-                else {
-                    System.out.println("Incorrect library name: " + firstLibraryName + ", must be either Main or South Park!");
-                }
 
-                // Add checkout record to borrowed_by
-                String insertQuery = "INSERT INTO borrowed_by (member_id, isbn, checkout_date, checkin_date)\n" +
+                    // Add checkout record to borrowed_by
+                    String insertQuery = "INSERT INTO borrowed_by (member_id, isbn, checkout_date, checkin_date)\n" +
                         "VALUES (" + record.member_id + ", '" + record.isbn + "', " + record.checkout_date + ", NULL)";
-                if (stmt.execute(insertQuery)) {
+
+                    stmt.execute(insertQuery);
                     System.out.println("Book checkout successful.");
                 }
                 else {
-                    System.out.println("Book checkout unsuccessful.");
+                    System.out.println("Incorrect library name: " + firstLibraryName + ", must be either Main or South Park!");
                 }
             }
             else {
