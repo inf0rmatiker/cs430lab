@@ -27,5 +27,5 @@ To execute the second goal as stated in the description:
 
 3. `$ cd target/classes/`, and execute **Main**:
    - `$ java Main <path_to_request_file>`
-   - Or, if you skipped step 3:
+   - Or, if you skipped step 2:
        - `$ SQLUSERNAME=<username> SQLPASSWORD=<password> java Main <path_to_request_file>`
