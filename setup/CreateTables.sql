@@ -10,7 +10,9 @@ DROP TABLE IF EXISTS borrowed_by,
                      member,
                      shelf,
                      library;
-                    
+
+DROP VIEW IF EXISTS list_books_csv;                    
+
 -- ##################### MAIN ENTITY TABLES ####################
 
 CREATE TABLE IF NOT EXISTS author (

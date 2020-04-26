@@ -16,6 +16,7 @@ To execute the first goal as stated in the description:
 
 To execute the second goal as stated in the description:
 1. Reset the database back to the state of Lab 3:
+   - `$ cd <project>/setup/`
    - Log into the **faure** database, and `$ use <your_database_name>;`
    - Execute **Restart.sql** by running `$ source Restart.sql;`
 

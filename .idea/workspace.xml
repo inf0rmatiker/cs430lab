@@ -3,8 +3,34 @@
   <component name="ChangeListManager">
     <list default="true" id="41c1c013-e3ce-4672-8db3-706c08170c47" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caleb-Carlson-Lab2.tar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CreateTables.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2Part1.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3Submission/ActivityScript.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3Submission/Caleb-Carlson-Lab3.tar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3Submission/CreateTables.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3Submission/Lab3Queries.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3Submission/LoadAuthorPhones.dump" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3Submission/LoadAuthors.dump" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3Submission/LoadBooks.dump" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3Submission/LoadBorrowedBy.dump" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3Submission/LoadLibraries.dump" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3Submission/LoadMainLibraryShelves.dump" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3Submission/LoadMembers.dump" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3Submission/LoadPhones.dump" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3Submission/LoadPublisherPhones.dump" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3Submission/LoadPublishers.dump" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3Submission/LoadShelves.dump" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3Submission/LoadStoredOn.dump" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3Submission/LoadWrittenBy.dump" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3Submission/PopulateTables.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3Submission/Queries.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3Submission/README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3Submission/lab3output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3Submission/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PopulateTables.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Queries.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,7 +45,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/StatementExecutor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="540">
-              <caret line="37" column="45" lean-forward="true" selection-start-line="37" selection-start-column="45" selection-end-line="37" selection-end-column="45" />
+              <caret line="37" column="45" selection-start-line="37" selection-start-column="45" selection-end-line="37" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -28,8 +54,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="300">
-                <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+              <first_editor relative-caret-position="285">
+                <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
               </first_editor>
               <second_editor />
             </state>
@@ -47,7 +73,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="19" lean-forward="true" selection-start-column="19" selection-end-column="19" />
+              <caret column="19" selection-start-column="19" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -105,11 +131,6 @@
             <path>
               <item name="cs430lab" type="b2602c69:ProjectViewProjectNode" />
               <item name="cs430lab" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cs430lab" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cs430lab" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -144,7 +165,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1587871749375" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1587872452390" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
@@ -210,12 +231,12 @@
       <workItem from="1587665591263" duration="608000" />
       <workItem from="1587666593842" duration="3363000" />
       <workItem from="1587677889721" duration="8953000" />
-      <workItem from="1587868688978" duration="3057000" />
+      <workItem from="1587868688978" duration="3759000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3057000" />
+    <option name="totallyTimeSpent" value="3759000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
@@ -326,22 +347,22 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/StatementExecutor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
-          <caret line="37" column="45" lean-forward="true" selection-start-line="37" selection-start-column="45" selection-end-line="37" selection-end-column="45" />
+          <caret line="37" column="45" selection-start-line="37" selection-start-column="45" selection-end-line="37" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="19" lean-forward="true" selection-start-column="19" selection-end-column="19" />
+          <caret column="19" selection-start-column="19" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="300">
-            <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <first_editor relative-caret-position="285">
+            <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
           </first_editor>
           <second_editor />
         </state>
