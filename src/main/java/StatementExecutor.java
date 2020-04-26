@@ -57,7 +57,7 @@ public class StatementExecutor {
 
     private static void processCheckinRecord(Statement stmt, Checkout record) {
         ResultSet rs;
-        System.out.println("Attempting to check in: " + record);
+        System.out.println("\nAttempting to check in: " + record);
 
         try {
             // Check for record existing, then update record
@@ -107,7 +107,7 @@ public class StatementExecutor {
 
     private static void processCheckoutRecord(Statement stmt, Checkout record) {
         ResultSet rs;
-        System.out.println("Attempting to check out: " + record);
+        System.out.println("\nAttempting to check out: " + record);
 
         try {
             String query = "SELECT * FROM stored_on AS so\n" +
