@@ -130,7 +130,7 @@ public class BasicUI extends JFrame implements ActionListener {
         if (isValidName(firstName)) {
             String lastName = JOptionPane.showInputDialog(basicFrame, "Last name:", "Account", JOptionPane.QUESTION_MESSAGE);
             if (isValidName(lastName)) {
-                String DOB = JOptionPane.showInputDialog(basicFrame, "Date of birth in YYYY-MM-DD format:", "Account", JOptionPane.QUESTION_MESSAGE);
+                String DOB = JOptionPane.showInputDialog(basicFrame, "Date of birth in MM/DD/YYYY format:", "Account", JOptionPane.QUESTION_MESSAGE);
                 if (isValidDOBPattern(DOB)) {
                     String gender = JOptionPane.showInputDialog(basicFrame, "Gender in M/F format:", "Account", JOptionPane.QUESTION_MESSAGE);
                     if (isValidGender(gender)) {
@@ -152,7 +152,7 @@ public class BasicUI extends JFrame implements ActionListener {
     }
 
     private boolean isValidDOBPattern(String dob) {
-        Pattern format = Pattern.compile("^\\d{4}-\\d{2}-\\d{2}$");
+        Pattern format = Pattern.compile("^\\d{2}/\\d{2}/\\d{4}$");
         Matcher matcher = format.matcher(dob);
         return matcher.matches();
     }
