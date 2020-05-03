@@ -1,5 +1,6 @@
 public class Main {
 
+    // TODO: Write appropriate usage message (manual)
     private static void printUsageMessage() {
         System.out.println("Description:\n\tRequest file must be an XML file containing only checkin or checkout requests.");
         System.out.println("\tBefore running, system variables SQLUSERNAME and SQLPASSWORD must be set appropriately.\n");
@@ -14,7 +15,7 @@ public class Main {
             if (args[0].equals("-d") || args[0].equals("--dumps")) {
                 DataReader.generateDumps();
             }
-            else {
+            else if (args[0].equals("-c") || args[0].equals("--checkouts")) {
                 String libdata = args[0];
                 CheckoutXmlParser parser = new CheckoutXmlParser(libdata);
 
@@ -25,6 +26,9 @@ public class Main {
                     StatementExecutor.executeStatements(parser.checkouts);
                     System.out.println("Program executed successfully.");
                 }
+            }
+            else {
+
             }
         }
         else {
