@@ -54,7 +54,6 @@ public class BasicUI extends JFrame implements ActionListener {
         //middlePanel.setLayout(new BorderLayout());
         //middlePanel.setBorder(new LineBorder(Color.BLACK));
         middlePanel.setLayout(new SpringLayout());
-        SpringUtilities.makeGrid(basicFrame, 4,2,0,0,0,0);
 
         bottomPanel.add(exitButton);
     }
@@ -108,7 +107,8 @@ public class BasicUI extends JFrame implements ActionListener {
             addWelcomeLabel();
             addInputFields();
             addSearchButton();
-
+            
+            SpringUtilities.makeGrid(basicFrame, 4,2,0,0,0,0);
             middlePanel.updateUI();
 
         } catch (IllegalStateException e) {
