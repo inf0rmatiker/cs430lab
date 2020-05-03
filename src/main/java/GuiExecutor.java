@@ -34,7 +34,7 @@ public class GuiExecutor {
 
             // Display URL and connection information
             System.out.println("INFO: URL: " + URL);
-            System.out.println("INFO: Connection: " + connection);
+            System.out.println("INFO: Connection: " + connection.getClientInfo());
         } catch (SQLException e) {
             throw new IllegalStateException("Unable to establish connection:\n:" + e.getMessage());
         }
@@ -43,7 +43,7 @@ public class GuiExecutor {
 
     public boolean memberExists(int memberId) {
         try {
-            String memberQuery = String.format("SELECT * FROM member_id WHERE member_id = %d", memberId);
+            String memberQuery = String.format("SELECT * FROM member WHERE member_id = %d", memberId);
 
             ResultSet rs;
             Statement stmt = connection.createStatement();
