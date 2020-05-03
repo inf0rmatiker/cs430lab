@@ -152,7 +152,7 @@ public class BasicUI extends JFrame implements ActionListener {
     }
 
     private boolean isValidDOBPattern(String dob) {
-        Pattern format = Pattern.compile("^\\d{2}/\\d{2}/\\d{4}$");
+        Pattern format = Pattern.compile("^\\d{4}-\\d{2}-\\d{2}$");
         Matcher matcher = format.matcher(dob);
         return matcher.matches();
     }
