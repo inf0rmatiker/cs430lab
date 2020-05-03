@@ -109,6 +109,7 @@ public class BasicUI extends JFrame implements ActionListener {
         String welcomeMessage = String.format("Welcome,  %s %s", executor.getMemberFirstName(), executor.getMemberLastName());
         JLabel welcomeLabel   = new JLabel(welcomeMessage);
         welcomeLabel.setFont(new Font("Verdana",1,20));
+        welcomeLabel.setHorizontalAlignment(JLabel.CENTER);
         middlePanel.add(welcomeLabel);
         middlePanel.updateUI();
 
