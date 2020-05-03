@@ -105,10 +105,9 @@ public class BasicUI extends JFrame implements ActionListener {
             }
 
             addWelcomeLabel();
-            addInputFields();
             addSearchButton();
-            
-            SpringUtilities.makeGrid(basicFrame, 4,2,0,0,0,0);
+
+            middlePanel.add(createInputPanel());
             middlePanel.updateUI();
 
         } catch (IllegalStateException e) {
@@ -127,23 +126,29 @@ public class BasicUI extends JFrame implements ActionListener {
         middlePanel.add(welcomeLabel);
     }
 
-    private void addInputFields() {
+    private JPanel createInputPanel() {
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new SpringLayout());
+        SpringUtilities.makeCompactGrid(basicFrame, 4,2,6,6,6,6);
+
         isbnLabel = new JLabel("ISBN");
         titleLabel = new JLabel("Title");
         authorLabel = new JLabel("Author");
 
-        isbnField = new JTextField("ISBN", 14);
-        titleField = new JTextField("Title", 30);
-        authorField = new JTextField("Author", 20);
+        isbnField = new JTextField(14);
+        titleField = new JTextField(30);
+        authorField = new JTextField(20);
 
-        middlePanel.add(isbnLabel);
-        middlePanel.add(isbnField);
+        inputPanel.add(isbnLabel);
+        inputPanel.add(isbnField);
 
-        middlePanel.add(titleLabel);
-        middlePanel.add(titleField);
+        inputPanel.add(titleLabel);
+        inputPanel.add(titleField);
 
-        middlePanel.add(authorLabel);
-        middlePanel.add(authorField);
+        inputPanel.add(authorLabel);
+        inputPanel.add(authorField);
+
+        return inputPanel;
     }
 
     private void addSearchButton() {
