@@ -16,13 +16,14 @@ public class BasicUI extends JFrame implements ActionListener {
 
     private JButton exitButton;
     private JButton searchButton;
+    private JTextField isbnField;
+    private JTextField titleField;
+    private JTextField authorField;
     private JFrame basicFrame;
     private JPanel middlePanel;
     private JPanel bottomPanel;
     private JPanel topPanel;
-    private JOptionPane memberIdPane;
 
-    private Member currentMember;
     private GuiExecutor executor;
 
     public BasicUI() {
@@ -78,6 +79,9 @@ public class BasicUI extends JFrame implements ActionListener {
         System.exit(0);
     }
 
+    /**
+     * MAIN ENTRY POINT FOR LOGIC
+     */
     private void start() {
         Integer memberId = getMemberId();
         System.out.println("INFO: Member ID " + memberId + " entered.");
@@ -96,8 +100,10 @@ public class BasicUI extends JFrame implements ActionListener {
             }
 
             addWelcomeLabel();
+            addInputFields();
             addSearchButton();
 
+            middlePanel.updateUI();
 
         } catch (IllegalStateException e) {
             System.err.println(e.getMessage());
@@ -113,8 +119,16 @@ public class BasicUI extends JFrame implements ActionListener {
         welcomeLabel.setFont(new Font("Verdana",1,20));
         welcomeLabel.setHorizontalAlignment(JLabel.CENTER);
         middlePanel.add(welcomeLabel);
-        middlePanel.updateUI();
+    }
 
+    private void addInputFields() {
+        isbnField = new JTextField("ISBN", 14);
+        titleField = new JTextField("Title", 30);
+        authorField = new JTextField("Author", 20);
+
+        middlePanel.add(isbnField);
+        middlePanel.add(titleField);
+        middlePanel.add(authorField);
     }
 
     private void addSearchButton() {
