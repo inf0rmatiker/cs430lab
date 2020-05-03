@@ -208,6 +208,7 @@ public class GuiExecutor {
                     Integer year   = Integer.parseInt(rs.getString("year_published"));
                     Integer pub_id = Integer.parseInt(rs.getString("pub_id"));
                     books.add(new Book(isbnInput, title, year, pub_id, -1));
+                    System.out.println("Adding book");
                 }
             }
 
