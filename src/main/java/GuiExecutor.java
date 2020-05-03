@@ -1,4 +1,8 @@
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class GuiExecutor {
 
@@ -109,6 +113,108 @@ public class GuiExecutor {
         }
 
 
+    }
+
+    private boolean isValidIsbn(String isbn) {
+        if (isbn == null || isbn.isEmpty()) return false;
+        Pattern format = Pattern.compile("^\\d{2}-\\d{5}-\\d{5}$");
+        Matcher matcher = format.matcher(isbn);
+        return matcher.matches();
+    }
+
+    private boolean isValidTitleSubset(String title){
+        return title != null && !title.isEmpty();
+    }
+
+    private boolean isValidAuthorName(String authorName) {
+        if (authorName == null || authorName.isEmpty()) return false;
+        String[] parts = authorName.trim().split(" ");
+        return parts.length == 2;
+    }
+
+    private ResultSet searchByIsbn(String isbn) {
+        try {
+            String searchQuery = String.format("SELECT * FROM book WHERE isbn = '%s'", isbn);
+            Statement stmt = connection.createStatement();
+            return stmt.executeQuery(searchQuery);
+
+        } catch (SQLException e) {
+            throw new IllegalStateException("Unable to search for book by isbn.");
+        }
+
+    }
+
+    private ResultSet searchByTitle(String title) {
+        try {
+            String searchQuery = "SELECT * FROM book WHERE title LIKE '%" + title + "%'";
+            Statement stmt = connection.createStatement();
+            return stmt.executeQuery(searchQuery);
+        } catch (SQLException e) {
+            throw new IllegalStateException("Unable to search for book by title.");
+        }
+
+    }
+
+    private ResultSet searchByAuthor(String author) {
+        String[] parts = author.trim().split(" ");
+        String firstName = parts[0];
+        String lastName = parts[1];
+
+        try {
+            String searchQuery = "SELECT * FROM book AS b\n" +
+                    "INNER JOIN (SELECT * FROM written_by AS wb\n" +
+                    "INNER JOIN author AS a\n" +
+                    "ON wb.author_id = a.author_id\n" +
+                    "WHERE a.first_name = '" + firstName + "' AND a.last_name = '" + lastName + "') AS a_ids_isbn\n" +
+                    "ON a_ids_isbn.isbn = b.isbn";
+            Statement stmt = connection.createStatement();
+            return stmt.executeQuery(searchQuery);
+        } catch (SQLException e) {
+            throw new IllegalStateException("Unable to search for book by title.");
+        }
+    }
+
+
+    public List<Book> getBooks(String isbnInput, String titleInput, String authorInput) {
+        List<Book> books = new ArrayList<>();
+
+        try {
+            if (isValidIsbn(isbnInput)) {
+                // Search by ISBN
+                ResultSet rs = searchByIsbn(isbnInput);
+                if (rs.next()) {
+                    String title   = rs.getString("title");
+                    Integer year   = Integer.parseInt(rs.getString("year_published"));
+                    Integer pub_id = Integer.parseInt(rs.getString("pub_id"));
+
+                    books.add(new Book(isbnInput, title, year, pub_id, -1));
+                }
+            }
+            else if (isValidTitleSubset(titleInput)) {
+                ResultSet rs = searchByTitle(titleInput);
+                while (rs.next()) {
+                    String title   = rs.getString("title");
+                    Integer year   = Integer.parseInt(rs.getString("year_published"));
+                    Integer pub_id = Integer.parseInt(rs.getString("pub_id"));
+                    books.add(new Book(isbnInput, title, year, pub_id, -1));
+                }
+            }
+            else if (isValidAuthorName(authorInput)) {
+                ResultSet rs = searchByAuthor(authorInput);
+                while (rs.next()) {
+                    String title   = rs.getString("title");
+                    Integer year   = Integer.parseInt(rs.getString("year_published"));
+                    Integer pub_id = Integer.parseInt(rs.getString("pub_id"));
+                    books.add(new Book(isbnInput, title, year, pub_id, -1));
+                }
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Unable to get book descriptions");
+            System.err.println(e.getMessage());
+        }
+
+        return books;
     }
 
 }

@@ -2,11 +2,12 @@ import javax.swing.*;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -106,7 +107,7 @@ public class BasicUI extends JFrame implements ActionListener {
             addSearchButton();
             addInputFields();
 
-            SpringUtilities.makeCompactGrid(middlePanel, 7,1,6,6,10,10);
+            SpringUtilities.makeCompactGrid(middlePanel, 7,1,6,6,100,40);
             middlePanel.updateUI();
 
         } catch (IllegalStateException e) {
@@ -140,10 +141,6 @@ public class BasicUI extends JFrame implements ActionListener {
         isbnField.setHorizontalAlignment(JTextField.CENTER);
         titleField.setHorizontalAlignment(JTextField.CENTER);
         authorField.setHorizontalAlignment(JTextField.CENTER);
-
-        isbnField.setPreferredSize(new Dimension(150, 20));
-        titleField.setPreferredSize(new Dimension(150, 20));
-        authorField.setPreferredSize(new Dimension(150, 20));
 
         middlePanel.add(isbnLabel);
         middlePanel.add(isbnField);
@@ -243,7 +240,15 @@ public class BasicUI extends JFrame implements ActionListener {
             exit();
         }
         else if (actionEvent.getSource() == searchButton) {
-            System.out.println("Search button pressed");
+            String isbnInput = isbnField.getText();
+            String titleInput = titleField.getText();
+            String authorInput = authorField.getText();
+
+            List<Book> books = executor.getBooks(isbnInput, titleInput, authorInput);
+            for (Book b: books) {
+                System.out.println(books);
+            }
+
         }
 
     }
