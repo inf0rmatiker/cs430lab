@@ -19,6 +19,10 @@ public class BasicUI extends JFrame implements ActionListener {
     private JTextField isbnField;
     private JTextField titleField;
     private JTextField authorField;
+    private JLabel welcomeLabel;
+    private JLabel isbnLabel;
+    private JLabel titleLabel;
+    private JLabel authorLabel;
     private JFrame basicFrame;
     private JPanel middlePanel;
     private JPanel bottomPanel;
@@ -47,8 +51,10 @@ public class BasicUI extends JFrame implements ActionListener {
         topPanel = new JPanel();
         bottomPanel = new JPanel();
 
-        middlePanel.setLayout(new BorderLayout());
-        middlePanel.setBorder(new LineBorder(Color.BLACK));
+        //middlePanel.setLayout(new BorderLayout());
+        //middlePanel.setBorder(new LineBorder(Color.BLACK));
+        middlePanel.setLayout(new SpringLayout());
+        SpringUtilities.makeGrid(basicFrame, 4,2,0,0,0,0);
 
         bottomPanel.add(exitButton);
     }
@@ -115,19 +121,28 @@ public class BasicUI extends JFrame implements ActionListener {
     private void addWelcomeLabel() {
         middlePanel.removeAll();
         String welcomeMessage = String.format("Welcome,  %s %s", executor.getMemberFirstName(), executor.getMemberLastName());
-        JLabel welcomeLabel   = new JLabel(welcomeMessage);
+        welcomeLabel = new JLabel(welcomeMessage);
         welcomeLabel.setFont(new Font("Verdana",1,20));
         welcomeLabel.setHorizontalAlignment(JLabel.CENTER);
         middlePanel.add(welcomeLabel);
     }
 
     private void addInputFields() {
+        isbnLabel = new JLabel("ISBN");
+        titleLabel = new JLabel("Title");
+        authorLabel = new JLabel("Author");
+
         isbnField = new JTextField("ISBN", 14);
         titleField = new JTextField("Title", 30);
         authorField = new JTextField("Author", 20);
 
+        middlePanel.add(isbnLabel);
         middlePanel.add(isbnField);
+
+        middlePanel.add(titleLabel);
         middlePanel.add(titleField);
+
+        middlePanel.add(authorLabel);
         middlePanel.add(authorField);
     }
 
