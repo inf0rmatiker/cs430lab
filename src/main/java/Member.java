@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Member {
     public Integer id;
@@ -14,9 +16,31 @@ public class Member {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.DOB = isoDateFormat(DOB);
+
+        if (isISODatePattern(DOB)) {
+            this.DOB = DOB; // No need to make changes
+        }
+        else if (isNormalDatePattern(DOB)) {
+            this.DOB = isoDateFormat(DOB); // Parse into appropriate format
+        }
+        else {
+            this.DOB = "N/A";
+        }
+
         this.gender = gender;
         this.checkouts = new ArrayList<Checkout>();
+    }
+
+    private boolean isISODatePattern(String dob) {
+        Pattern format = Pattern.compile("^\\d{4}-\\d{2}-\\d{2}$");
+        Matcher matcher = format.matcher(dob);
+        return matcher.matches();
+    }
+
+    private boolean isNormalDatePattern(String dob) {
+        Pattern format = Pattern.compile("^\\d{2}/\\d{2}/\\d{4}$");
+        Matcher matcher = format.matcher(dob);
+        return matcher.matches();
     }
 
     public String isoDateFormat(String date) {
