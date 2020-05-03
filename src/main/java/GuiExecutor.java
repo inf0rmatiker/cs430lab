@@ -167,10 +167,12 @@ public class GuiExecutor {
                     "ON wb.author_id = a.author_id\n" +
                     "WHERE a.first_name = '" + firstName + "' AND a.last_name = '" + lastName + "') AS a_ids_isbn\n" +
                     "ON a_ids_isbn.isbn = b.isbn";
+
+            System.out.println(searchQuery);
             Statement stmt = connection.createStatement();
             return stmt.executeQuery(searchQuery);
         } catch (SQLException e) {
-            throw new IllegalStateException("Unable to search for book by title.");
+            throw new IllegalStateException("Unable to search for book by author.");
         }
     }
 
