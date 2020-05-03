@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class BasicUI extends JFrame implements ActionListener {
 
@@ -87,7 +89,7 @@ public class BasicUI extends JFrame implements ActionListener {
             }
             else {
                 System.out.println("INFO: Member " + memberId + " does not exist; prompting creation");
-                createMember(executor, memberId);
+                createMember(memberId);
             }
         } catch (IllegalStateException e) {
             System.err.println(e.getMessage());
@@ -97,7 +99,7 @@ public class BasicUI extends JFrame implements ActionListener {
     }
 
     private Integer getMemberId() {
-        String input = JOptionPane.showInputDialog(basicFrame, "Enter your member ID:", "Member ID", JOptionPane.QUESTION_MESSAGE);
+        String input = JOptionPane.showInputDialog(basicFrame, "Enter your member ID:", "Account", JOptionPane.QUESTION_MESSAGE);
         try {
             if (input == null) {
                 System.out.println("INFO: Member ID prompt cancelled. Exiting...");
@@ -111,9 +113,62 @@ public class BasicUI extends JFrame implements ActionListener {
         return getMemberId(); // Recursive call to get member ID
     }
 
-    private void createMember(GuiExecutor executor, int memberId) {
-        int response = JOptionPane.showConfirmDialog(basicFrame, "Member ID does not exist. Would you like to create an account?");
-        System.out.println(response);
+    private void createMember(int memberId) {
+        int response = JOptionPane.showConfirmDialog(basicFrame, "Member ID does not exist. Would you like to create an account?",
+                "Account", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        switch(response) {
+            case JOptionPane.YES_OPTION: createMemberHelper(memberId); break;
+            case JOptionPane.NO_OPTION:
+            case JOptionPane.CANCEL_OPTION:
+            default: return;
+        }
+    }
+
+    private void createMemberHelper(int memberId) throws IllegalStateException {
+        String firstName = JOptionPane.showInputDialog(basicFrame, "First name:", "Account", JOptionPane.QUESTION_MESSAGE);
+        if (isValidName(firstName)) {
+            String lastName = JOptionPane.showInputDialog(basicFrame, "Last name:", "Account", JOptionPane.QUESTION_MESSAGE);
+            if (isValidName(lastName)) {
+                String DOB = JOptionPane.showInputDialog(basicFrame, "Date of birth in YYYY-MM-DD format:", "Account", JOptionPane.QUESTION_MESSAGE);
+                if (isValidDOBPattern(DOB)) {
+                    String gender = JOptionPane.showInputDialog(basicFrame, "Gender in M/F format:", "Account", JOptionPane.QUESTION_MESSAGE);
+                    if (isValidGender(gender)) {
+                        Character genderChar = gender.toUpperCase().charAt(0);
+                        Member newMember = new Member(memberId, firstName, lastName, DOB, genderChar);
+                        executor.setMember(newMember);
+                        if (executor.addMemberToDatabase()) {
+                            System.out.println("INFO: Successfully added member " + newMember.id + " to the database.");
+                            return;
+                        }
+                    }
+                    throw new IllegalStateException("Invalid gender " + gender + " entered!");
+                }
+                throw new IllegalStateException("Invalid DOB " + DOB + " entered!");
+            }
+            throw new IllegalStateException("Invalid last name " + lastName + " entered!");
+        }
+        throw new IllegalStateException("Invalid first name " + firstName + " entered!");
+    }
+
+    private boolean isValidDOBPattern(String dob) {
+        Pattern format = Pattern.compile("^\\d{2}/\\d{2}/\\d{4}$");
+        Matcher matcher = format.matcher(dob);
+        return matcher.matches();
+    }
+
+    private boolean isValidGender(String gender) {
+        gender = gender.toUpperCase();
+        Pattern format = Pattern.compile("^[MF]$");
+        Matcher matcher = format.matcher(gender);
+        return matcher.matches();
+    }
+
+    private boolean isValidName(String name) {
+        name = name.trim();
+        Pattern format = Pattern.compile("^\\w+$");
+        Matcher matcher = format.matcher(name);
+        return matcher.matches();
     }
 
     @Override

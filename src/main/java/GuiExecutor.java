@@ -88,4 +88,27 @@ public class GuiExecutor {
         }
     }
 
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public boolean addMemberToDatabase() throws IllegalStateException {
+        try {
+            ResultSet rs;
+
+            // Create member insertion query
+            String addMemberUpdate = String.format("INSERT INTO member (member_id, first_name, last_name, dob, gender)\n" +
+                    "VALUES (%d, '%s', '%s', '%s', '%s')", member.id, member.firstName, member.lastName, member.DOB, member.gender);
+            Statement stmt = connection.createStatement();
+            stmt.execute(addMemberUpdate);
+
+            return memberExists(member.id);
+
+        } catch (SQLException e) {
+            throw new IllegalStateException("Unable to add member to database.");
+        }
+
+
+    }
+
 }

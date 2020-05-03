@@ -164,9 +164,10 @@
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="944" y="329" key="run.anything.popup/0.27.2560.1413/304.1440.1920.1080@0.27.2560.1413" timestamp="1587685484920" />
-    <state x="943" y="333" width="672" height="678" key="search.everywhere.popup" timestamp="1587680104750">
-      <screen x="0" y="27" width="2560" height="1413" />
+    <state x="943" y="321" width="672" height="651" key="search.everywhere.popup" timestamp="1588541534447">
+      <screen x="0" y="27" width="2560" height="1356" />
     </state>
+    <state x="943" y="321" width="672" height="651" key="search.everywhere.popup/0.27.2560.1356@0.27.2560.1356" timestamp="1588541534447" />
     <state x="943" y="333" width="672" height="678" key="search.everywhere.popup/0.27.2560.1413/304.1440.1920.1080@0.27.2560.1413" timestamp="1587680104750" />
   </component>
 </project>
