@@ -103,10 +103,9 @@ public class BasicUI extends JFrame implements ActionListener {
                 createMember(memberId);
             }
 
-            addWelcomeLabel();
             addSearchButton();
+            addInputFields();
 
-            middlePanel.add(createInputPanel());
             middlePanel.updateUI();
 
         } catch (IllegalStateException e) {
@@ -125,10 +124,10 @@ public class BasicUI extends JFrame implements ActionListener {
         middlePanel.add(welcomeLabel);
     }
 
-    private JPanel createInputPanel() {
-        JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new SpringLayout());
+    private void addInputFields() {
         SpringUtilities.makeCompactGrid(middlePanel, 4,2,6,6,6,6);
+
+        addWelcomeLabel();
 
         isbnLabel = new JLabel("ISBN");
         titleLabel = new JLabel("Title");
@@ -138,16 +137,14 @@ public class BasicUI extends JFrame implements ActionListener {
         titleField = new JTextField(30);
         authorField = new JTextField(20);
 
-        inputPanel.add(isbnLabel);
-        inputPanel.add(isbnField);
+        middlePanel.add(isbnLabel);
+        middlePanel.add(isbnField);
 
-        inputPanel.add(titleLabel);
-        inputPanel.add(titleField);
+        middlePanel.add(titleLabel);
+        middlePanel.add(titleField);
 
-        inputPanel.add(authorLabel);
-        inputPanel.add(authorField);
-
-        return inputPanel;
+        middlePanel.add(authorLabel);
+        middlePanel.add(authorField);
     }
 
     private void addSearchButton() {
