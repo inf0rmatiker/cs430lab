@@ -54,7 +54,6 @@ public class BasicUI extends JFrame implements ActionListener {
         //middlePanel.setLayout(new BorderLayout());
         //middlePanel.setBorder(new LineBorder(Color.BLACK));
         middlePanel.setLayout(new SpringLayout());
-
         bottomPanel.add(exitButton);
     }
 
@@ -129,7 +128,7 @@ public class BasicUI extends JFrame implements ActionListener {
     private JPanel createInputPanel() {
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new SpringLayout());
-        SpringUtilities.makeCompactGrid(basicFrame, 4,2,6,6,6,6);
+        SpringUtilities.makeCompactGrid(middlePanel, 4,2,6,6,6,6);
 
         isbnLabel = new JLabel("ISBN");
         titleLabel = new JLabel("Title");
