@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,6 +46,8 @@ public class BasicUI extends JFrame implements ActionListener {
         bottomPanel = new JPanel();
 
         middlePanel.setLayout(new BorderLayout());
+        middlePanel.setBorder(new LineBorder(Color.BLACK));
+
         bottomPanel.add(exitButton);
     }
 
@@ -91,18 +94,23 @@ public class BasicUI extends JFrame implements ActionListener {
                 createMember(memberId);
             }
 
-            middlePanel.removeAll();
-            String welcomeMessage = String.format("Welcome %s %s!", executor.getMemberFirstName(), executor.getMemberLastName());
-            JLabel welcomeLabel   = new JLabel(welcomeMessage);
-            welcomeLabel.setFont(new Font("Verdana",1,20));
+            addWelcomeLabel(executor.getMemberFirstName() + " " + executor.getMemberLastName());
 
-            middlePanel.add(welcomeLabel);
-            middlePanel.updateUI();
 
         } catch (IllegalStateException e) {
             System.err.println(e.getMessage());
             System.exit(1);
         }
+
+    }
+
+    private void addWelcomeLabel(String fullName) {
+        middlePanel.removeAll();
+        String welcomeMessage = String.format("Welcome,  %s %s", executor.getMemberFirstName(), executor.getMemberLastName());
+        JLabel welcomeLabel   = new JLabel(welcomeMessage);
+        welcomeLabel.setFont(new Font("Verdana",1,20));
+        middlePanel.add(welcomeLabel);
+        middlePanel.updateUI();
 
     }
 
