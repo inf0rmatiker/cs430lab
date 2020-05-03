@@ -8,6 +8,8 @@ public class GuiExecutor {
 
     private Connection connection;
 
+    private Member member;
+
     public GuiExecutor() throws IllegalStateException {
         USERNAME = System.getenv("SQLUSERNAME");
         PASSWORD = System.getenv("SQLPASSWORD");
@@ -41,9 +43,18 @@ public class GuiExecutor {
 
     }
 
+    public String getMemberFirstName() {
+        return member.firstName;
+    }
+
+    public String getMemberLastName() {
+        return member.lastName;
+    }
+
     public boolean memberExists(int memberId) {
+        String memberQuery = "";
         try {
-            String memberQuery = String.format("SELECT * FROM member WHERE member_id = %d", memberId);
+            memberQuery = String.format("SELECT * FROM member WHERE member_id = %d", memberId);
 
             ResultSet rs;
             Statement stmt = connection.createStatement();
@@ -51,10 +62,30 @@ public class GuiExecutor {
 
             return rs.next(); // Returns true if the new current row is valid; false if there are no more rows
         } catch (SQLException e) {
-            System.err.println("ERROR: Problem creating statement from connection");
+            System.err.println("ERROR: Unable to execute query \"" + memberQuery + ";\"");
         }
 
         return false;
+    }
+
+    public void setMember(int memberId) {
+        try {
+            String memberQuery = String.format("SELECT * FROM member WHERE member_id = %d", memberId);
+
+            ResultSet rs;
+            Statement stmt = connection.createStatement();
+            rs = stmt.executeQuery(memberQuery);
+
+            if (rs.next()) {
+                String firstName = rs.getString("first_name");
+                String lastName  = rs.getString("last_name");
+                String DOB       = rs.getString("dob");
+                Character gender = rs.getString("gender").charAt(0);
+                this.member = new Member(memberId, firstName, lastName, DOB, gender);
+            }
+        } catch (SQLException e) {
+            System.err.println("ERROR: Problem creating statement from connection");
+        }
     }
 
 }

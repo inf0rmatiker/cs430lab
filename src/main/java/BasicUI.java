@@ -79,10 +79,15 @@ public class BasicUI extends JFrame implements ActionListener {
         try {
             executor = new GuiExecutor();
             if (executor.memberExists(memberId)) {
-                System.out.println("INFO: Member " + memberId + " exists.");
+                System.out.println("INFO: Member " + memberId + " exists; setting member as current.");
+                executor.setMember(memberId);
+                System.out.println(String.format("INFO: Successfully set member to %s %s.",
+                        executor.getMemberFirstName(), executor.getMemberLastName()));
+
             }
             else {
-                System.out.println("INFO: Member " + memberId + " does not exist.");
+                System.out.println("INFO: Member " + memberId + " does not exist; prompting creation");
+                createMember(executor, memberId);
             }
         } catch (IllegalStateException e) {
             System.err.println(e.getMessage());
@@ -104,6 +109,11 @@ public class BasicUI extends JFrame implements ActionListener {
             System.err.println("ERROR: Malformed member ID entered: " + ((input.trim().isEmpty()) ? "[empty]" : input) );
         }
         return getMemberId(); // Recursive call to get member ID
+    }
+
+    private void createMember(GuiExecutor executor, int memberId) {
+        int response = JOptionPane.showConfirmDialog(basicFrame, "Member ID does not exist. Would you like to create an account?");
+        System.out.println(response);
     }
 
     @Override
