@@ -7,6 +7,7 @@ public class StatementExecutor {
     private static final String PASSWORD = System.getenv("SQLPASSWORD");
     private static final String URL = "jdbc:mysql://faure/" + USERNAME + "?serverTimezone=UTC";
 
+
     public static void executeStatements(List<Checkout> checkouts) {
         if (USERNAME == null || USERNAME.isEmpty()) {
             if (PASSWORD == null || PASSWORD.isEmpty()) {

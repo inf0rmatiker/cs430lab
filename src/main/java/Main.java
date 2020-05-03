@@ -36,7 +36,8 @@ public class Main {
             }
             else if (args[0].equals("-g") || args[0].equals("--gui")) {
                 // Launch GUI
-                System.out.println("Launching GUI:");
+                System.out.println("Launching GUI...");
+                BasicUI gui = new BasicUI();
             }
             else {
                 printUsageMessage();
