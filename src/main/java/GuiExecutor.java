@@ -162,11 +162,11 @@ public class GuiExecutor {
 
         try {
             String searchQuery = "SELECT * FROM book AS b\n" +
-                    "INNER JOIN (SELECT * FROM written_by AS wb\n" +
+                    "INNER JOIN (SELECT isbn FROM written_by AS wb\n" +
                     "INNER JOIN author AS a\n" +
                     "ON wb.author_id = a.author_id\n" +
-                    "WHERE a.first_name = '" + firstName + "' AND a.last_name = '" + lastName + "') AS a_ids_isbn\n" +
-                    "ON a_ids_isbn.isbn = b.isbn";
+                    "WHERE a.first_name = '" + firstName + "' AND a.last_name = '" + lastName + "') AS res_0\n" +
+                    "ON b.isbn = res_0.isbn";
 
             System.out.println(searchQuery);
             Statement stmt = connection.createStatement();
