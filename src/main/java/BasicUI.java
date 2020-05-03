@@ -85,12 +85,20 @@ public class BasicUI extends JFrame implements ActionListener {
                 executor.setMember(memberId);
                 System.out.println(String.format("INFO: Successfully set member to %s %s.",
                         executor.getMemberFirstName(), executor.getMemberLastName()));
-
             }
             else {
                 System.out.println("INFO: Member " + memberId + " does not exist; prompting creation");
                 createMember(memberId);
             }
+
+            middlePanel.removeAll();
+            String welcomeMessage = String.format("Welcome %s %s!", executor.getMemberFirstName(), executor.getMemberLastName());
+            JLabel welcomeLabel   = new JLabel(welcomeMessage);
+            welcomeLabel.setFont(new Font("Verdana",1,20));
+
+            middlePanel.add(welcomeLabel);
+            middlePanel.updateUI();
+
         } catch (IllegalStateException e) {
             System.err.println(e.getMessage());
             System.exit(1);
