@@ -30,7 +30,7 @@ public class GuiExecutor {
 
         // Establish connection
         try {
-            DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
             // Display URL and connection information
             System.out.println("INFO: URL: " + URL);
