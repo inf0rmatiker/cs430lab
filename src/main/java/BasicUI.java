@@ -15,6 +15,7 @@ public class BasicUI extends JFrame implements ActionListener {
     public static final long serialVersionUID = 1;
 
     private JButton exitButton;
+    private JButton searchButton;
     private JFrame basicFrame;
     private JPanel middlePanel;
     private JPanel bottomPanel;
@@ -94,7 +95,8 @@ public class BasicUI extends JFrame implements ActionListener {
                 createMember(memberId);
             }
 
-            addWelcomeLabel(executor.getMemberFirstName() + " " + executor.getMemberLastName());
+            addWelcomeLabel();
+            addSearchButton();
 
 
         } catch (IllegalStateException e) {
@@ -104,7 +106,7 @@ public class BasicUI extends JFrame implements ActionListener {
 
     }
 
-    private void addWelcomeLabel(String fullName) {
+    private void addWelcomeLabel() {
         middlePanel.removeAll();
         String welcomeMessage = String.format("Welcome,  %s %s", executor.getMemberFirstName(), executor.getMemberLastName());
         JLabel welcomeLabel   = new JLabel(welcomeMessage);
@@ -113,6 +115,15 @@ public class BasicUI extends JFrame implements ActionListener {
         middlePanel.add(welcomeLabel);
         middlePanel.updateUI();
 
+    }
+
+    private void addSearchButton() {
+        searchButton = new JButton("Search");
+        searchButton.setToolTipText("Search for book");
+        searchButton.addActionListener(this);
+
+        bottomPanel.add(searchButton);
+        bottomPanel.updateUI();
     }
 
     private Integer getMemberId() {
@@ -192,6 +203,9 @@ public class BasicUI extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         if (actionEvent.getSource() == exitButton) {
             exit();
+        }
+        else if (actionEvent.getSource() == searchButton) {
+            System.out.println("Search button pressed");
         }
 
     }
