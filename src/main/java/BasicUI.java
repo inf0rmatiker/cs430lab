@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,6 +29,10 @@ public class BasicUI extends JFrame implements ActionListener {
     private JPanel middlePanel;
     private JPanel bottomPanel;
     private JPanel topPanel;
+    private JPanel resultsPanel;
+
+    private List<JButton> results;
+
 
     private GuiExecutor executor;
 
@@ -106,8 +111,9 @@ public class BasicUI extends JFrame implements ActionListener {
 
             addSearchButton();
             addInputFields();
+            addResultsPanel();
 
-            SpringUtilities.makeCompactGrid(middlePanel, 7,1,6,6,100,40);
+            SpringUtilities.makeCompactGrid(middlePanel, 8,1,6,6,100,40);
             middlePanel.updateUI();
 
         } catch (IllegalStateException e) {
@@ -150,6 +156,14 @@ public class BasicUI extends JFrame implements ActionListener {
 
         middlePanel.add(authorLabel);
         middlePanel.add(authorField);
+    }
+
+    private void addResultsPanel() {
+        this.results = new ArrayList<>();
+        resultsPanel = new JPanel();
+        resultsPanel.add(new JLabel("Search Results:"));
+
+        middlePanel.add(resultsPanel);
     }
 
     private void addSearchButton() {
