@@ -266,7 +266,11 @@ public class BasicUI extends JFrame implements ActionListener {
             }
             else {
                 List<String> bookStatuses = executor.findBook(books.get(0));
-                String[] resultsList = (String[]) bookStatuses.toArray();
+                String[] resultsList = new String[bookStatuses.size()];
+                for (int i = 0; i < bookStatuses.size(); i++) {
+                    resultsList[i] = bookStatuses.get(i);
+                }
+
                 JList<String> results = new JList<>(resultsList);
                 resultsPanel.add(results);
             }
