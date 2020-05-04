@@ -1,12 +1,8 @@
 import javax.swing.*;
 import javax.swing.JOptionPane;
-import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
@@ -95,21 +91,12 @@ public class BasicUI extends JFrame implements ActionListener {
      * MAIN ENTRY POINT FOR LOGIC
      */
     private void start() {
-        Integer memberId = getMemberId();
-        System.out.println("INFO: Member ID " + memberId + " entered.");
 
         try {
             executor = new GuiExecutor();
-            if (executor.memberExists(memberId)) {
-                System.out.println("INFO: Member " + memberId + " exists; setting member as current.");
-                executor.setMember(memberId);
-                System.out.println(String.format("INFO: Successfully set member to %s %s.",
-                        executor.getMemberFirstName(), executor.getMemberLastName()));
-            }
-            else {
-                System.out.println("INFO: Member " + memberId + " does not exist; prompting creation");
-                createMember(memberId);
-            }
+            addWelcomeLabel();
+            captureMember();
+            updateWelcomeLabel();
 
             addSearchButton();
             addInputFields();
@@ -123,21 +110,38 @@ public class BasicUI extends JFrame implements ActionListener {
             System.exit(1);
         }
 
+
+    }
+
+    private void captureMember() {
+        Integer memberId = getMemberId();
+        System.out.println("INFO: Member ID " + memberId + " entered.");
+
+        if (executor.memberExists(memberId)) {
+            System.out.println("INFO: Member " + memberId + " exists; setting member as current.");
+            executor.setMember(memberId);
+            System.out.println(String.format("INFO: Successfully set member to %s %s.",
+                    executor.getMemberFirstName(), executor.getMemberLastName()));
+        }
+        else {
+            System.out.println("INFO: Member " + memberId + " does not exist; prompting creation");
+            createMember(memberId);
+        }
     }
 
     private void addWelcomeLabel() {
         middlePanel.removeAll();
-        String welcomeMessage = "Welcome, ";
-        String welcomeName =   String.format("%s %s", executor.getMemberFirstName(), executor.getMemberLastName());
-        welcomeLabel = new JLabel(welcomeMessage + welcomeName);
-        //welcomeLabel.setFont(new Font("Verdana",1,20));
-        //welcomeLabel.setHorizontalAlignment(JLabel.CENTER);
+        welcomeLabel = new JLabel("");
         middlePanel.add(welcomeLabel);
     }
 
-    private void addInputFields() {
-        addWelcomeLabel();
+    private void updateWelcomeLabel() {
+        String welcomeMessage = String.format("Welcome, %s %s", executor.getMemberFirstName(), executor.getMemberLastName());
+        welcomeLabel.setText(welcomeMessage);
+        middlePanel.updateUI();
+    }
 
+    private void addInputFields() {
         isbnLabel = new JLabel("ISBN");
         titleLabel = new JLabel("Title");
         authorLabel = new JLabel("Author");
@@ -197,11 +201,8 @@ public class BasicUI extends JFrame implements ActionListener {
         int response = JOptionPane.showConfirmDialog(basicFrame, "Member ID does not exist. Would you like to create an account?",
                 "Account", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 
-        switch(response) {
-            case JOptionPane.YES_OPTION: createMemberHelper(memberId); break;
-            case JOptionPane.NO_OPTION:
-            case JOptionPane.CANCEL_OPTION:
-            default: return;
+        if (response == JOptionPane.YES_OPTION) {
+            createMemberHelper(memberId);
         }
     }
 
@@ -312,6 +313,7 @@ public class BasicUI extends JFrame implements ActionListener {
                             // I don't think we use this here
                         }
 
+                        // ActionEvent for choosing a book.
                         @Override
                         public void actionPerformed(ActionEvent actionEvent) {
                             List<String> results = executor.findBook(this.book);
@@ -325,8 +327,12 @@ public class BasicUI extends JFrame implements ActionListener {
 
                             SpringUtilities.makeCompactGrid(resultsPanel, 1, 1, 6, 6, 6,6);
                             resultsPanel.updateUI();
+
+                            captureMember();
+                            updateWelcomeLabel();
                         }
                     });
+
                     resultButton.getAction().putValue("book", b);
                     resultButton.setText(b.title);
                     results.add(resultButton);
