@@ -264,8 +264,10 @@ public class BasicUI extends JFrame implements ActionListener {
                 resultsPanel.add(new JLabel("None of the libraries have that book in stock."));
             }
             else {
-                String bookStatus = executor.findBook(books.get(0));
-                resultsPanel.add(new JLabel(bookStatus));
+                List<JLabel> bookStatuses = executor.findBook(books.get(0));
+                for (JLabel label: bookStatuses) {
+                    resultsPanel.add(label);
+                }
             }
 
             resultsPanel.updateUI();

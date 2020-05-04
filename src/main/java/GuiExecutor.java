@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -210,7 +211,8 @@ public class GuiExecutor {
         return books;
     }
 
-    public String findBook(Book book) {
+    public List<JLabel> findBook(Book book) {
+        List<JLabel> results = new ArrayList<>();
         try {
             String searchQuery = "SELECT * FROM book AS b\n" +
                     "INNER JOIN\n" +
@@ -224,19 +226,18 @@ public class GuiExecutor {
 
 
             int count = 0;
-            StringBuilder sb = new StringBuilder("");
-            sb.append(String.format("\"%s\" stored at:\n", book.title));
+            results.add(new JLabel(String.format("\"%s\" stored at:\n", book.title)));
             while (rs.next()) {
                 String shelfNumber = rs.getString("s_num");
                 String libraryName = rs.getString("name");
-                sb.append(String.format("\t%s Library on shelf %s\n", libraryName, shelfNumber));
+                results.add(new JLabel(String.format("\t%s Library on shelf %s\n", libraryName, shelfNumber)));
                 count++;
             }
 
             if (count == 0) {
-                sb.append("All copies are currently checked out.");
+                results.add(new JLabel("All copies are currently checked out."));
             }
-            return sb.toString();
+            return results;
 
         } catch (SQLException e) {
             throw new IllegalStateException("Unable to search for book by author.");
