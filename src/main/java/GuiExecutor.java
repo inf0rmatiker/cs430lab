@@ -211,8 +211,8 @@ public class GuiExecutor {
         return books;
     }
 
-    public List<JLabel> findBook(Book book) {
-        List<JLabel> results = new ArrayList<>();
+    public List<String> findBook(Book book) {
+        List<String> stringResults = new ArrayList<>();
         try {
             String searchQuery = "SELECT * FROM book AS b\n" +
                     "INNER JOIN\n" +
@@ -226,18 +226,18 @@ public class GuiExecutor {
 
 
             int count = 0;
-            results.add(new JLabel(String.format("\"%s\" stored at:\n", book.title)));
+            stringResults.add(String.format("\"%s\" stored at:\n", book.title));
             while (rs.next()) {
                 String shelfNumber = rs.getString("s_num");
                 String libraryName = rs.getString("name");
-                results.add(new JLabel(String.format("\t%s Library on shelf %s\n", libraryName, shelfNumber)));
+                stringResults.add(String.format("\t%s Library on shelf %s\n", libraryName, shelfNumber));
                 count++;
             }
 
             if (count == 0) {
-                results.add(new JLabel("All copies are currently checked out."));
+                stringResults.add("All copies are currently checked out.");
             }
-            return results;
+            return stringResults;
 
         } catch (SQLException e) {
             throw new IllegalStateException("Unable to search for book by author.");
