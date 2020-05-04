@@ -273,27 +273,70 @@ public class BasicUI extends JFrame implements ActionListener {
                 resultsPanel.add(new JLabel("Search Results:"));
 
                 for (Book b: books) {
-                    JButton resultButton = new JButton(b.title);
+                    JButton resultButton = new JButton(new Action() { // Just make it an anonymous class, because lazy
+                        Book book;
+
+                        boolean enabled = true;
+
+                        @Override
+                        public Object getValue(String s) {
+                            if (s.equals("book")) return this.book;
+                            return null;
+                        }
+
+                        @Override
+                        public void putValue(String s, Object o) {
+                            if (o instanceof Book) {
+                                Book val = (Book) o;
+                                if (s.equals("book")) this.book = val;
+                            }
+                        }
+
+                        @Override
+                        public void setEnabled(boolean b) {
+                            this.enabled = b;
+                        }
+
+                        @Override
+                        public boolean isEnabled() {
+                            return enabled;
+                        }
+
+                        @Override
+                        public void addPropertyChangeListener(PropertyChangeListener propertyChangeListener) {
+                            // I don't think we use this here
+                        }
+
+                        @Override
+                        public void removePropertyChangeListener(PropertyChangeListener propertyChangeListener) {
+                            // I don't think we use this here
+                        }
+
+                        @Override
+                        public void actionPerformed(ActionEvent actionEvent) {
+                            List<String> results = executor.findBook(this.book);
+                            String[] resultStrs  = new String[results.size()];
+                            for (int i = 0; i < results.size(); i++) {
+                                resultStrs[i] = results.get(i);
+                            }
+                            JList<String> statuses = new JList<>(resultStrs);
+                            resultsPanel.removeAll();
+                            resultsPanel.add(statuses);
+
+                            SpringUtilities.makeCompactGrid(resultsPanel, 1, 1, 6, 6, 6,6);
+                            resultsPanel.updateUI();
+                        }
+                    });
+
                     results.add(resultButton);
                     resultsPanel.add(resultButton);
 
                 }
 
                 SpringUtilities.makeCompactGrid(resultsPanel, results.size() + 1, 1, 6, 6, 6,6);
-
-
-//                List<String> bookStatuses = executor.findBook(books.get(0));
-//                String[] resultsList = new String[bookStatuses.size()];
-//                for (int i = 0; i < bookStatuses.size(); i++) {
-//                    resultsList[i] = bookStatuses.get(i);
-//                }
-//
-//                JList<String> results = new JList<>(resultsList);
-//                resultsPanel.add(results);
             }
 
             resultsPanel.updateUI();
-
         }
 
     }
