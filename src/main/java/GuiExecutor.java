@@ -222,11 +222,18 @@ public class GuiExecutor {
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(searchQuery);
 
+
+            int count = 0;
             StringBuilder sb = new StringBuilder("");
             while (rs.next()) {
                 String shelfNumber = rs.getString("s_num");
                 String libraryName = rs.getString("name");
-                sb.append(String.format("Book stored at %s Library on shelf %s\n", libraryName, shelfNumber));
+                sb.append(String.format("Book stored at %s Library on shelf %s.\n", libraryName, shelfNumber));
+                count++;
+            }
+
+            if (count == 0) {
+                sb.append("All copies are currently checked out.");
             }
             return sb.toString();
 
