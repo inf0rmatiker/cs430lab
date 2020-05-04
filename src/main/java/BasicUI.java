@@ -277,7 +277,7 @@ public class BasicUI extends JFrame implements ActionListener {
 
                 }
 
-                SpringUtilities.makeGrid(resultsPanel, results.size(), 1, 0, 0, 0 ,0  );
+                SpringUtilities.makeGrid(resultsPanel, results.size() + 1, 1, 0, 0, 0 ,0  );
 
 
 //                List<String> bookStatuses = executor.findBook(books.get(0));
