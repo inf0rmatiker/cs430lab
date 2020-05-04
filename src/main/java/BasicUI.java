@@ -161,7 +161,6 @@ public class BasicUI extends JFrame implements ActionListener {
     private void addResultsPanel() {
         this.results = new ArrayList<>();
         resultsPanel = new JPanel();
-        resultsPanel.add(new JLabel("Search Results:"));
 
         middlePanel.add(resultsPanel);
     }
@@ -260,11 +259,13 @@ public class BasicUI extends JFrame implements ActionListener {
 
             List<Book> books = executor.getBooks(isbnInput, titleInput, authorInput);
 
+            resultsPanel.removeAll();
             if (books.isEmpty()) {
-                System.out.println("None of the libraries have that book in stock.");
+                resultsPanel.add(new JLabel("None of the libraries have that book in stock."));
             }
             else {
-                System.out.println(executor.findBook(books.get(0)));
+                String bookStatus = executor.findBook(books.get(0));
+                resultsPanel.add(new JLabel(bookStatus));
             }
 
 
