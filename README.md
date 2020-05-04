@@ -24,7 +24,7 @@ and updating the database accordingly.
 
 - Reset the database back to the state of Lab 4:
    - Reset back to Lab 3 first
-   - `$ cd ./target/classes && java Main -c ./data/Libdata.xml`
+   - `$ cd ./target/classes && java Main -c ../../data/Libdata.xml`
 
 ## Usage
 
