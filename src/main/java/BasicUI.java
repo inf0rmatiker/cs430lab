@@ -268,6 +268,7 @@ public class BasicUI extends JFrame implements ActionListener {
                 resultsPanel.add(new JLabel(bookStatus));
             }
 
+            resultsPanel.updateUI();
 
         }
 
