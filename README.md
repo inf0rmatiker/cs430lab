@@ -27,9 +27,10 @@ and updating the database accordingly.
 - Note: A simple way to execute the GUI: `$ ./run.sh`
 - Below is the usage message for the Java program:
 
+```
 SYNOPSIS:
 	java Main ( DUMP_OPT | CHECKOUTS_OPT | GUI_OPT )
-```
+
 DESCRIPTION:
 
 	1. Generating dumps
