@@ -31,6 +31,7 @@ public class BasicUI extends JFrame implements ActionListener {
     private JPanel bottomPanel;
     private JPanel topPanel;
     private JPanel resultsPanel;
+    private SpringLayout resultsLayout;
 
     private List<JButton> results;
 
@@ -160,9 +161,10 @@ public class BasicUI extends JFrame implements ActionListener {
     }
 
     private void addResultsPanel() {
+        this.resultsLayout = new SpringLayout();
         this.results = new ArrayList<>();
         resultsPanel = new JPanel();
-        resultsPanel.setLayout(new SpringLayout());
+        resultsPanel.setLayout(resultsLayout);
 
         middlePanel.add(resultsPanel);
     }
@@ -277,7 +279,7 @@ public class BasicUI extends JFrame implements ActionListener {
 
                 }
 
-                SpringUtilities.makeGrid(resultsPanel, results.size() + 1, 1, 0, 0, 0 ,0  );
+                SpringUtilities.makeCompactGrid(resultsPanel, results.size() + 1, 1, 6, 6, 6,6);
 
 
 //                List<String> bookStatuses = executor.findBook(books.get(0));
