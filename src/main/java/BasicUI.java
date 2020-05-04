@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -253,6 +254,7 @@ public class BasicUI extends JFrame implements ActionListener {
             exit();
         }
         else if (actionEvent.getSource() == searchButton) {
+            results.clear(); // Clear previous search results
             String isbnInput = isbnField.getText();
             String titleInput = titleField.getText();
             String authorInput = authorField.getText();
@@ -265,14 +267,28 @@ public class BasicUI extends JFrame implements ActionListener {
                 resultsPanel.add(new JLabel("None of the libraries have that book in stock."));
             }
             else {
-                List<String> bookStatuses = executor.findBook(books.get(0));
-                String[] resultsList = new String[bookStatuses.size()];
-                for (int i = 0; i < bookStatuses.size(); i++) {
-                    resultsList[i] = bookStatuses.get(i);
+                resultsPanel.add(new JLabel("Search Results:"));
+
+                for (Book b: books) {
+                    JButton resultButton = new JButton(b.title);
+                    results.add(new JButton());
+                }
+                JButton[] buttons = new JButton[results.size()];
+                for (int i = 0; i < results.size(); i++) {
+                    buttons[i] = results.get(i);
                 }
 
-                JList<String> results = new JList<>(resultsList);
-                resultsPanel.add(results);
+                JList<JButton> bookButtons = new JList<>(buttons);
+                resultsPanel.add(bookButtons);
+
+//                List<String> bookStatuses = executor.findBook(books.get(0));
+//                String[] resultsList = new String[bookStatuses.size()];
+//                for (int i = 0; i < bookStatuses.size(); i++) {
+//                    resultsList[i] = bookStatuses.get(i);
+//                }
+//
+//                JList<String> results = new JList<>(resultsList);
+//                resultsPanel.add(results);
             }
 
             resultsPanel.updateUI();
