@@ -168,7 +168,6 @@ public class GuiExecutor {
                     "WHERE a.first_name = '" + firstName + "' AND a.last_name = '" + lastName + "') AS res_0\n" +
                     "ON b.isbn = res_0.isbn";
 
-            System.out.println(searchQuery);
             Statement stmt = connection.createStatement();
             return stmt.executeQuery(searchQuery);
         } catch (SQLException e) {
@@ -181,34 +180,25 @@ public class GuiExecutor {
         List<Book> books = new ArrayList<>();
 
         try {
+            ResultSet rs = null;
             if (isValidIsbn(isbnInput)) {
                 // Search by ISBN
-                ResultSet rs = searchByIsbn(isbnInput);
-                if (rs.next()) {
-                    String title   = rs.getString("title");
-                    Integer year   = Integer.parseInt(rs.getString("year_published"));
-                    Integer pub_id = Integer.parseInt(rs.getString("pub_id"));
-
-                    books.add(new Book(isbnInput, title, year, pub_id, -1));
-                }
+                rs = searchByIsbn(isbnInput);
             }
             else if (isValidTitleSubset(titleInput)) {
-                ResultSet rs = searchByTitle(titleInput);
-                while (rs.next()) {
-                    String title   = rs.getString("title");
-                    Integer year   = Integer.parseInt(rs.getString("year_published"));
-                    Integer pub_id = Integer.parseInt(rs.getString("pub_id"));
-                    books.add(new Book(isbnInput, title, year, pub_id, -1));
-                }
+                rs = searchByTitle(titleInput);
             }
             else if (isValidAuthorName(authorInput)) {
-                ResultSet rs = searchByAuthor(authorInput);
+                rs = searchByAuthor(authorInput);
+            }
+
+            if (rs != null) {
                 while (rs.next()) {
+                    String isbn    = rs.getString("isbn");
                     String title   = rs.getString("title");
                     Integer year   = Integer.parseInt(rs.getString("year_published"));
                     Integer pub_id = Integer.parseInt(rs.getString("pub_id"));
-                    books.add(new Book(isbnInput, title, year, pub_id, -1));
-                    System.out.println("Adding book");
+                    books.add(new Book(isbn, title, year, pub_id, -1));
                 }
             }
 
@@ -219,5 +209,32 @@ public class GuiExecutor {
 
         return books;
     }
+
+    public String findBook(Book book) {
+        try {
+            String searchQuery = "SELECT * FROM book AS b\n" +
+                    "INNER JOIN\n" +
+                    "  (SELECT * FROM stored_on AS so\n" +
+                    "   WHERE so.total_copies > 0) AS instock\n" +
+                    "ON b.isbn = instock.isbn\n" +
+                    "WHERE b.isbn = '" + book.isbn + "'";
+
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(searchQuery);
+
+            StringBuilder sb = new StringBuilder("");
+            while (rs.next()) {
+                String shelfNumber = rs.getString("s_num");
+                String libraryName = rs.getString("name");
+                sb.append(String.format("Book stored at %s Library on shelf %s\n", libraryName, shelfNumber));
+            }
+            return sb.toString();
+
+        } catch (SQLException e) {
+            throw new IllegalStateException("Unable to search for book by author.");
+        }
+    }
+
+
 
 }

@@ -246,8 +246,11 @@ public class BasicUI extends JFrame implements ActionListener {
 
             List<Book> books = executor.getBooks(isbnInput, titleInput, authorInput);
             for (Book b: books) {
-                System.out.println(books);
+                System.out.println(b);
             }
+
+            System.out.println(executor.findBook(books.get(0)));
+
 
         }
 
