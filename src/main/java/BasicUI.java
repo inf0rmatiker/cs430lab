@@ -327,7 +327,8 @@ public class BasicUI extends JFrame implements ActionListener {
                             resultsPanel.updateUI();
                         }
                     });
-
+                    resultButton.getAction().putValue("book", b);
+                    resultButton.setText(b.title);
                     results.add(resultButton);
                     resultsPanel.add(resultButton);
 
