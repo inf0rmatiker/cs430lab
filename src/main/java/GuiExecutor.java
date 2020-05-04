@@ -225,10 +225,11 @@ public class GuiExecutor {
 
             int count = 0;
             StringBuilder sb = new StringBuilder("");
+            sb.append(String.format("\"%s\" stored at:\n", book.title));
             while (rs.next()) {
                 String shelfNumber = rs.getString("s_num");
                 String libraryName = rs.getString("name");
-                sb.append(String.format("Book stored at %s Library on shelf %s.\n", libraryName, shelfNumber));
+                sb.append(String.format("\t%s Library on shelf %s\n", libraryName, shelfNumber));
                 count++;
             }
 
