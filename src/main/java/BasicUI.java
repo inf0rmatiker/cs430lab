@@ -162,6 +162,7 @@ public class BasicUI extends JFrame implements ActionListener {
     private void addResultsPanel() {
         this.results = new ArrayList<>();
         resultsPanel = new JPanel();
+        resultsPanel.setLayout(new SpringLayout());
 
         middlePanel.add(resultsPanel);
     }
@@ -271,15 +272,13 @@ public class BasicUI extends JFrame implements ActionListener {
 
                 for (Book b: books) {
                     JButton resultButton = new JButton(b.title);
-                    results.add(new JButton());
-                }
-                JButton[] buttons = new JButton[results.size()];
-                for (int i = 0; i < results.size(); i++) {
-                    buttons[i] = results.get(i);
+                    results.add(resultButton);
+                    resultsPanel.add(resultButton);
+
                 }
 
-                JList<JButton> bookButtons = new JList<>(buttons);
-                resultsPanel.add(bookButtons);
+                SpringUtilities.makeGrid(resultsPanel, results.size(), 1, 0, 0, 0 ,0  );
+
 
 //                List<String> bookStatuses = executor.findBook(books.get(0));
 //                String[] resultsList = new String[bookStatuses.size()];
