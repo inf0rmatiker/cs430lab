@@ -22,6 +22,10 @@ and updating the database accordingly.
    - Log into the **faure** database, and `$ use <your_database_name>;`
    - Execute **Restart.sql** by running `$ source Restart.sql;`
 
+- Reset the database back to the state of Lab 4:
+   - Reset back to Lab 3 first
+   - `$ cd ./target/classes && java Main -c ./data/Libdata.xml`
+
 ## Usage
 
 - Note: A simple way to execute the GUI: `$ ./run.sh`
